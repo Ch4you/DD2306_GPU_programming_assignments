@@ -1,0 +1,57 @@
+mkdir -p ./bin
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/EMfield.cpp -c -o src/EMfield.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/Basic.cpp -c -o src/Basic.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/RW_IO.cpp -c -o src/RW_IO.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/BC.cpp -c -o src/BC.o
+nvcc -I./include -arch=sm_90 -std=c++11 -O3 -g --fmad=false -Xcompiler -Wall --compiler-bindir=g++ src/Particles.cu -c -o src/Particles.o
+src/Particles.cu: In function ‘int mover_PC(particles*, EMfield*, grid*, parameters*)’:
+src/Particles.cu:164:38: warning: ‘wptilde’ may be used uninitialized [-Wmaybe-uninitialized]
+  164 |             part->z[i] = zptilde + wptilde*dt_sub_cycling;
+      |                             ~~~~~~~~~^~~~~~~~~~~~~~~~~
+src/Particles.cu:97:53: note: ‘wptilde’ was declared here
+   97 |     FPpart xptilde, yptilde, zptilde, uptilde, vptilde, wptilde;
+      |                                                     ^~~~~~~
+src/Particles.cu:160:28: warning: ‘vptilde’ may be used uninitialized [-Wmaybe-uninitialized]
+  160 |             part->v[i]= 2.0*vptilde - part->v[i];
+      |                            ^~~~~~~
+src/Particles.cu:97:44: note: ‘vptilde’ was declared here
+   97 |     FPpart xptilde, yptilde, zptilde, uptilde, vptilde, wptilde;
+      |                                            ^~~~~~~
+src/Particles.cu:159:28: warning: ‘uptilde’ may be used uninitialized [-Wmaybe-uninitialized]
+  159 |             part->u[i]= 2.0*uptilde - part->u[i];
+      |                            ^~~~~~~
+src/Particles.cu:97:35: note: ‘uptilde’ was declared here
+   97 |     FPpart xptilde, yptilde, zptilde, uptilde, vptilde, wptilde;
+      |                                   ^~~~~~~
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/EMfield_aux.cpp -c -o src/EMfield_aux.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/InterpDensSpecies.cpp -c -o src/InterpDensSpecies.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/Particles_aux.cpp -c -o src/Particles_aux.o
+src/Particles_aux.cpp: In function ‘void particle_aux_allocate(particles*, particles_aux*, int)’:
+src/Particles_aux.cpp:14:10: warning: unused variable ‘npmax’ [-Wunused-variable]
+   14 |     long npmax = part->npmax;
+      |          ^~~~~
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/Grid.cpp -c -o src/Grid.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/Timing.cpp -c -o src/Timing.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/ConfigFile.cpp -c -o src/ConfigFile.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/InterpDensNet.cpp -c -o src/InterpDensNet.o
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/sputniPIC.cpp -c -o src/sputniPIC.o
+In file included from src/sputniPIC.cpp:25:
+./include/IC.h: In function ‘void initGEM(parameters*, grid*, EMfield*, EMfield_aux*, particles*, interpDensSpecies*)’:
+./include/IC.h:82:25: warning: unused variable ‘sign’ [-Wunused-variable]
+   82 |     double prob, theta, sign;
+      |                         ^~~~
+[ -d src ] || mkdir src
+nvcc -std=c++11 -I./include -O3 -g -Xcompiler -Wall src/TransArraySpace3D.cpp -c -o src/TransArraySpace3D.o
+nvcc -I./include -arch=sm_90 -std=c++11 -O3 -g --fmad=false -Xcompiler -Wall --compiler-bindir=g++ src/EMfield.o src/Basic.o src/RW_IO.o src/BC.o src/Particles.o src/EMfield_aux.o src/InterpDensSpecies.o src/Particles_aux.o src/Grid.o src/Timing.o src/ConfigFile.o src/InterpDensNet.o src/sputniPIC.o src/TransArraySpace3D.o -o bin/miniPIC.out

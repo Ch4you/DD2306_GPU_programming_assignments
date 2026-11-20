@@ -1,0 +1,166 @@
+
+-------------------------
+Simulation Parameters
+-------------------------
+Number of species    = 4
+Number of particles of species 0 = 4096000	 (MAX = 4096000)  QOM = -64
+Number of particles of species 1 = 4096000	 (MAX = 4096000)  QOM = 1
+Number of particles of species 2 = 4096000	 (MAX = 4096000)  QOM = -64
+Number of particles of species 3 = 4096000	 (MAX = 4096000)  QOM = 1
+x-Length                 = 40
+y-Length                 = 20
+z-Length                 = 1
+Number of cells (x)      = 256
+Number of cells (y)      = 128
+Number of cells (z)      = 1
+Time step                = 0.25
+Number of cycles         = 10
+Results saved in: data
+*************************************************
+**  Initialize GEM Challenge with Pertubation  **
+*************************************************
+** B0x = 0.0195
+** B0y = 0
+** B0z = 0
+** Delta (current sheet thickness) = 0.5
+** rho species 0 = 1 CURRENT SHEET 
+** rho species 1 = 1 CURRENT SHEET 
+** rho species 2 = 0.02 BACKGROUND 
+** rho species 3 = 0.02 BACKGROUND 
+*************************************************
+Mover: GPU
+
+***********************
+   cycle = 1
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 18.1253 ms, kernel 1.57152 ms, total with D2H 25.5046 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 53.8218 ms, kernel 0.974304 ms, total with D2H 60.5843 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.563 ms, kernel 1.46362 ms, total with D2H 18.8322 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.3758 ms, kernel 0.976576 ms, total with D2H 18.1671 ms
+
+***********************
+   cycle = 2
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 11.4615 ms, kernel 1.47722 ms, total with D2H 18.7364 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 11.2186 ms, kernel 0.97584 ms, total with D2H 17.9726 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 25.8251 ms, kernel 1.46246 ms, total with D2H 33.079 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 23.9417 ms, kernel 0.977472 ms, total with D2H 30.719 ms
+
+***********************
+   cycle = 3
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 33.5786 ms, kernel 1.46957 ms, total with D2H 40.8462 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 15.1101 ms, kernel 0.840736 ms, total with D2H 21.727 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.0986 ms, kernel 1.46381 ms, total with D2H 18.3524 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.0469 ms, kernel 0.83552 ms, total with D2H 17.6703 ms
+
+***********************
+   cycle = 4
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 32.8596 ms, kernel 1.47888 ms, total with D2H 40.1326 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 32.296 ms, kernel 0.84048 ms, total with D2H 38.9164 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.2384 ms, kernel 1.46557 ms, total with D2H 18.4855 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.1416 ms, kernel 0.842176 ms, total with D2H 17.7379 ms
+
+***********************
+   cycle = 5
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 11.8844 ms, kernel 1.47555 ms, total with D2H 19.1484 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 11.2846 ms, kernel 0.87952 ms, total with D2H 17.9396 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.1116 ms, kernel 1.47088 ms, total with D2H 18.3738 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.0531 ms, kernel 0.888 ms, total with D2H 17.7545 ms
+
+***********************
+   cycle = 6
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 11.645 ms, kernel 1.49536 ms, total with D2H 18.92 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 11.2599 ms, kernel 0.900032 ms, total with D2H 17.9271 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.1548 ms, kernel 1.47962 ms, total with D2H 18.4246 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 15.1451 ms, kernel 0.896544 ms, total with D2H 21.8948 ms
+
+***********************
+   cycle = 7
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 11.85 ms, kernel 1.49514 ms, total with D2H 19.1322 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 11.2016 ms, kernel 0.907104 ms, total with D2H 17.8772 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.451 ms, kernel 1.48362 ms, total with D2H 18.7452 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.3238 ms, kernel 0.902112 ms, total with D2H 18.0369 ms
+
+***********************
+   cycle = 8
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 11.495 ms, kernel 1.51616 ms, total with D2H 18.7868 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 11.219 ms, kernel 0.912256 ms, total with D2H 17.9221 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 32.1564 ms, kernel 1.50221 ms, total with D2H 39.4547 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 18.862 ms, kernel 0.906784 ms, total with D2H 25.5654 ms
+
+***********************
+   cycle = 9
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 32.9904 ms, kernel 1.54208 ms, total with D2H 40.325 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 32.3077 ms, kernel 0.916992 ms, total with D2H 39.0139 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.0611 ms, kernel 1.53622 ms, total with D2H 18.3785 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.1845 ms, kernel 0.914464 ms, total with D2H 17.878 ms
+
+***********************
+   cycle = 10
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 12.1303 ms, kernel 1.5975 ms, total with D2H 19.5126 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 11.2339 ms, kernel 0.91328 ms, total with D2H 18.0022 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.1905 ms, kernel 1.59293 ms, total with D2H 18.5681 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.3556 ms, kernel 0.913472 ms, total with D2H 18.0738 ms
+Opening file: ./data/E_10.vtk
+Opening file: ./data/B_10.vtk
+Opening file: ./data/rhoe_10.vtk
+Opening file: ./data/rhoi_10.vtk
+Opening file: ./data/rho_net_10.vtk
+CHECKSUM species 0 nop=4096000 sum(x)=8.192011e+07 sum(y)=4.095982e+07 sum(z)=2.048001e+06 sum(u)=-3.277598e+00 sum(v)=1.232570e+01 sum(w)=-2.442935e+04
+CHECKSUM species 1 nop=4096000 sum(x)=8.191816e+07 sum(y)=4.095997e+07 sum(z)=1.941565e+06 sum(u)=-1.014897e+00 sum(v)=-1.050121e+01 sum(w)=-1.329681e+05
+CHECKSUM species 2 nop=4096000 sum(x)=8.192694e+07 sum(y)=4.095998e+07 sum(z)=2.047821e+06 sum(u)=1.360416e+02 sum(v)=-1.908574e+01 sum(w)=1.822890e+02
+CHECKSUM species 3 nop=4096000 sum(x)=8.191789e+07 sum(y)=4.096007e+07 sum(z)=2.048056e+06 sum(u)=-2.944687e+01 sum(v)=2.984522e+01 sum(w)=1.915120e+01
+
+**************************************
+   Tot. Simulation Time (s) = 13.8354
+   Mover Time / Cycle   (s) = 0.101455
+   Interp. Time / Cycle (s) = 1.03017
+**************************************

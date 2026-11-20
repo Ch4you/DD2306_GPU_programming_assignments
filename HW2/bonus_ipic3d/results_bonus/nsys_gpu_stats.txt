@@ -1,0 +1,143 @@
+
+-------------------------
+Simulation Parameters
+-------------------------
+Number of species    = 4
+Number of particles of species 0 = 4096000	 (MAX = 4096000)  QOM = -64
+Number of particles of species 1 = 4096000	 (MAX = 4096000)  QOM = 1
+Number of particles of species 2 = 4096000	 (MAX = 4096000)  QOM = -64
+Number of particles of species 3 = 4096000	 (MAX = 4096000)  QOM = 1
+x-Length                 = 40
+y-Length                 = 20
+z-Length                 = 1
+Number of cells (x)      = 256
+Number of cells (y)      = 128
+Number of cells (z)      = 1
+Time step                = 0.25
+Number of cycles         = 3
+Results saved in: data
+*************************************************
+**  Initialize GEM Challenge with Pertubation  **
+*************************************************
+** B0x = 0.0195
+** B0y = 0
+** B0z = 0
+** Delta (current sheet thickness) = 0.5
+** rho species 0 = 1 CURRENT SHEET 
+** rho species 1 = 1 CURRENT SHEET 
+** rho species 2 = 0.02 BACKGROUND 
+** rho species 3 = 0.02 BACKGROUND 
+*************************************************
+Mover: GPU
+
+***********************
+   cycle = 1
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 39.1522 ms, kernel 1.63075 ms, total with D2H 46.8067 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 37.6292 ms, kernel 1.00509 ms, total with D2H 44.6365 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 37.9886 ms, kernel 1.47738 ms, total with D2H 45.3968 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.2178 ms, kernel 0.996608 ms, total with D2H 18.1196 ms
+
+***********************
+   cycle = 2
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 11.7151 ms, kernel 1.49197 ms, total with D2H 19.2305 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 11.5517 ms, kernel 1.00976 ms, total with D2H 18.4755 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.2715 ms, kernel 1.47507 ms, total with D2H 18.6689 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.2066 ms, kernel 1.00291 ms, total with D2H 18.1325 ms
+
+***********************
+   cycle = 3
+***********************
+***  GPU MOVER with SUBCYCLYING 1 - species 0 ***
+GPU mover species 0: alloc+H2D 11.6835 ms, kernel 1.49488 ms, total with D2H 19.2834 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 1 ***
+GPU mover species 1: alloc+H2D 11.4104 ms, kernel 0.860064 ms, total with D2H 18.1988 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 2 ***
+GPU mover species 2: alloc+H2D 11.2688 ms, kernel 1.47469 ms, total with D2H 18.6789 ms
+***  GPU MOVER with SUBCYCLYING 1 - species 3 ***
+GPU mover species 3: alloc+H2D 11.2129 ms, kernel 0.853216 ms, total with D2H 17.9948 ms
+
+**************************************
+   Tot. Simulation Time (s) = 5.40445
+   Mover Time / Cycle   (s) = 0.105324
+   Interp. Time / Cycle (s) = 0.988356
+**************************************
+Generating '/tmp/nsys-report-4700.qdstrm'
+[1/7] [0%                          ] nsys_gpu.nsys-rep[1/7] [0%                          ] nsys_gpu.nsys-rep[1/7] [======33%                   ] nsys_gpu.nsys-rep[1/7] [=========43%                ] nsys_gpu.nsys-rep[1/7] [=============58%            ] nsys_gpu.nsys-rep[1/7] [=============59%            ] nsys_gpu.nsys-rep[1/7] [==============61%           ] nsys_gpu.nsys-rep[1/7] [==============62%           ] nsys_gpu.nsys-rep[1/7] [==============64%           ] nsys_gpu.nsys-rep[1/7] [===============65%          ] nsys_gpu.nsys-rep[1/7] [=====================87%    ] nsys_gpu.nsys-rep[1/7] [========================98% ] nsys_gpu.nsys-rep[1/7] [========================100%] nsys_gpu.nsys-rep[1/7] [========================100%] nsys_gpu.nsys-rep
+[2/7] [0%                          ] nsys_gpu.sqlite[2/7] [1%                          ] nsys_gpu.sqlite[2/7] [2%                          ] nsys_gpu.sqlite[2/7] [3%                          ] nsys_gpu.sqlite[2/7] [4%                          ] nsys_gpu.sqlite[2/7] [5%                          ] nsys_gpu.sqlite[2/7] [6%                          ] nsys_gpu.sqlite[2/7] [7%                          ] nsys_gpu.sqlite[2/7] [8%                          ] nsys_gpu.sqlite[2/7] [9%                          ] nsys_gpu.sqlite[2/7] [10%                         ] nsys_gpu.sqlite[2/7] [11%                         ] nsys_gpu.sqlite[2/7] [12%                         ] nsys_gpu.sqlite[2/7] [13%                         ] nsys_gpu.sqlite[2/7] [14%                         ] nsys_gpu.sqlite[2/7] [=15%                        ] nsys_gpu.sqlite[2/7] [=16%                        ] nsys_gpu.sqlite[2/7] [=17%                        ] nsys_gpu.sqlite[2/7] [==18%                       ] nsys_gpu.sqlite[2/7] [==19%                       ] nsys_gpu.sqlite[2/7] [==20%                       ] nsys_gpu.sqlite[2/7] [==21%                       ] nsys_gpu.sqlite[2/7] [===22%                      ] nsys_gpu.sqlite[2/7] [===23%                      ] nsys_gpu.sqlite[2/7] [===24%                      ] nsys_gpu.sqlite[2/7] [====25%                     ] nsys_gpu.sqlite[2/7] [====26%                     ] nsys_gpu.sqlite[2/7] [====27%                     ] nsys_gpu.sqlite[2/7] [====28%                     ] nsys_gpu.sqlite[2/7] [=====29%                    ] nsys_gpu.sqlite[2/7] [=====30%                    ] nsys_gpu.sqlite[2/7] [=====31%                    ] nsys_gpu.sqlite[2/7] [=====32%                    ] nsys_gpu.sqlite[2/7] [======33%                   ] nsys_gpu.sqlite[2/7] [======34%                   ] nsys_gpu.sqlite[2/7] [======35%                   ] nsys_gpu.sqlite[2/7] [=======36%                  ] nsys_gpu.sqlite[2/7] [=======37%                  ] nsys_gpu.sqlite[2/7] [=======38%                  ] nsys_gpu.sqlite[2/7] [=======39%                  ] nsys_gpu.sqlite[2/7] [========40%                 ] nsys_gpu.sqlite[2/7] [========41%                 ] nsys_gpu.sqlite[2/7] [========42%                 ] nsys_gpu.sqlite[2/7] [=========43%                ] nsys_gpu.sqlite[2/7] [=========44%                ] nsys_gpu.sqlite[2/7] [=========45%                ] nsys_gpu.sqlite[2/7] [=========46%                ] nsys_gpu.sqlite[2/7] [==========47%               ] nsys_gpu.sqlite[2/7] [==========48%               ] nsys_gpu.sqlite[2/7] [==========49%               ] nsys_gpu.sqlite[2/7] [===========50%              ] nsys_gpu.sqlite[2/7] [===========51%              ] nsys_gpu.sqlite[2/7] [===========52%              ] nsys_gpu.sqlite[2/7] [===========53%              ] nsys_gpu.sqlite[2/7] [============54%             ] nsys_gpu.sqlite[2/7] [============55%             ] nsys_gpu.sqlite[2/7] [============56%             ] nsys_gpu.sqlite[2/7] [============57%             ] nsys_gpu.sqlite[2/7] [=============58%            ] nsys_gpu.sqlite[2/7] [=============59%            ] nsys_gpu.sqlite[2/7] [=============60%            ] nsys_gpu.sqlite[2/7] [==============61%           ] nsys_gpu.sqlite[2/7] [==============62%           ] nsys_gpu.sqlite[2/7] [==============63%           ] nsys_gpu.sqlite[2/7] [==============64%           ] nsys_gpu.sqlite[2/7] [===============65%          ] nsys_gpu.sqlite[2/7] [===============66%          ] nsys_gpu.sqlite[2/7] [===============67%          ] nsys_gpu.sqlite[2/7] [================68%         ] nsys_gpu.sqlite[2/7] [================69%         ] nsys_gpu.sqlite[2/7] [================70%         ] nsys_gpu.sqlite[2/7] [================71%         ] nsys_gpu.sqlite[2/7] [=================72%        ] nsys_gpu.sqlite[2/7] [=================73%        ] nsys_gpu.sqlite[2/7] [=================74%        ] nsys_gpu.sqlite[2/7] [==================75%       ] nsys_gpu.sqlite[2/7] [==================76%       ] nsys_gpu.sqlite[2/7] [==================77%       ] nsys_gpu.sqlite[2/7] [==================78%       ] nsys_gpu.sqlite[2/7] [===================79%      ] nsys_gpu.sqlite[2/7] [===================80%      ] nsys_gpu.sqlite[2/7] [===================81%      ] nsys_gpu.sqlite[2/7] [===================82%      ] nsys_gpu.sqlite[2/7] [====================83%     ] nsys_gpu.sqlite[2/7] [====================84%     ] nsys_gpu.sqlite[2/7] [====================85%     ] nsys_gpu.sqlite[2/7] [=====================86%    ] nsys_gpu.sqlite[2/7] [=====================87%    ] nsys_gpu.sqlite[2/7] [=====================88%    ] nsys_gpu.sqlite[2/7] [=====================89%    ] nsys_gpu.sqlite[2/7] [======================90%   ] nsys_gpu.sqlite[2/7] [======================91%   ] nsys_gpu.sqlite[2/7] [======================92%   ] nsys_gpu.sqlite[2/7] [=======================93%  ] nsys_gpu.sqlite[2/7] [=======================94%  ] nsys_gpu.sqlite[2/7] [=======================95%  ] nsys_gpu.sqlite[2/7] [=======================96%  ] nsys_gpu.sqlite[2/7] [========================97% ] nsys_gpu.sqlite[2/7] [========================98% ] nsys_gpu.sqlite[2/7] [========================99% ] nsys_gpu.sqlite[2/7] [========================100%] nsys_gpu.sqlite[2/7] [========================100%] nsys_gpu.sqlite
+[3/7] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)    Med (ns)    Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ----------  -----------  --------  ---------  -----------  ----------------------
+     95.1       3631773950         43  84459859.3  100133207.0    374922  225673094   43139222.4  poll                  
+      4.2        160525236       1609     99767.1      18273.0      1016   25661026     723724.5  ioctl                 
+      0.5         19520456        143    136506.7       1337.0      1010   19239439    1608719.3  fopen                 
+      0.0          1517152          8    189644.0     171497.5    138317     315603      57700.0  sem_timedwait         
+      0.0          1511086         22     68685.7      13026.5      4000     932409     195940.5  mmap64                
+      0.0           527281          2    263640.5     263640.5    207610     319671      79239.1  pthread_create        
+      0.0           421541         49      8602.9       2505.0      1631      56710      11254.0  mmap                  
+      0.0           324059          1    324059.0     324059.0    324059     324059          0.0  pthread_cond_wait     
+      0.0           242305         51      4751.1       2661.0      1005      18294       3848.2  open64                
+      0.0           147277         10     14727.7      14176.0     13445      18002       1474.5  fgets                 
+      0.0           116699         41      2846.3       1433.0      1005       7746       2102.5  munmap                
+      0.0            97210         31      3135.8       3438.0      1013       6695       1394.9  fflush                
+      0.0            33588          2     16794.0      16794.0      6373      27215      14737.5  fopen64               
+      0.0            30891         12      2574.3       1908.5      1682       9967       2332.8  read                  
+      0.0            26056          7      3722.3       2791.0      1922       9935       2821.9  write                 
+      0.0            24855          6      4142.5       4643.5      1232       6766       2218.1  open                  
+      0.0            22924          6      3820.7       2435.0      1266      11225       3784.3  fclose                
+      0.0            15300          2      7650.0       7650.0      6668       8632       1388.8  socket                
+      0.0            12747          3      4249.0       3865.0      3522       5360        977.3  pipe2                 
+      0.0             7033          1      7033.0       7033.0      7033       7033          0.0  connect               
+      0.0             6563          3      2187.7       2562.0      1243       2758        824.0  fwrite                
+      0.0             5450          2      2725.0       2725.0      1568       3882       1636.2  pthread_cond_broadcast
+      0.0             3905          2      1952.5       1952.5      1409       2496        768.6  putc                  
+      0.0             1752          1      1752.0       1752.0      1752       1752          0.0  bind                  
+      0.0             1349          1      1349.0       1349.0      1349       1349          0.0  listen                
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls  Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ---------  --------  --------  ---------  -----------  ----------------------
+     65.6        292756672        252  1161732.8  981026.0     49979    6229552    1532966.9  cudaMemcpy            
+     31.9        142381538        181   786638.3   94888.0      1552  130680385    9708711.4  cudaFree              
+      2.3         10237546        180    56875.3   79937.0      1621     275976      49723.7  cudaMalloc            
+      0.1           374607         12    31217.3   16794.0     13004     166022      42961.0  cudaLaunchKernel      
+      0.0           202616         48     4221.2    3308.5      2077      17442       3232.0  cudaEventRecord       
+      0.0            82882         48     1726.7     451.5       282      18444       3495.0  cudaEventCreate       
+      0.0            55033         12     4586.1    4568.0      4162       4789        173.6  cudaEventSynchronize  
+      0.0            24575         48      512.0     245.0       206       2255        492.6  cudaEventDestroy      
+      0.0             2025          1     2025.0    2025.0      2025       2025          0.0  cuModuleGetLoadingMode
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)                                                  Name                                                
+ --------  ---------------  ---------  ---------  ---------  --------  --------  -----------  ----------------------------------------------------------------------------------------------------
+    100.0         14493692         12  1207807.7  1233047.5    848666   1471286     277395.5  mover_kernel(float *, float *, float *, float *, float *, float *, long, const float *, const float…
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)   Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
+ --------  ---------------  -----  ---------  --------  --------  --------  -----------  ----------------------------
+     74.0        186931814    180  1038510.1   13359.5     13248   5836022    1693812.2  [CUDA memcpy Host-to-Device]
+     26.0         65751308     72   913212.6  905658.0    897049   1115192      31822.8  [CUDA memcpy Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
+ ----------  -----  --------  --------  --------  --------  -----------  ----------------------------
+   1238.277    180     6.879     0.543     0.543    16.384        7.782  [CUDA memcpy Host-to-Device]
+   1179.648     72    16.384    16.384    16.384    16.384        0.000  [CUDA memcpy Device-to-Host]
+
+Generated:
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/bonus_ipic3d/results_bonus/nsys_gpu.nsys-rep
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/bonus_ipic3d/results_bonus/nsys_gpu.sqlite
