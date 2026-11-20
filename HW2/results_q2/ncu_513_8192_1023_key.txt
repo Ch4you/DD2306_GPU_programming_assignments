@@ -1,0 +1,73 @@
+[4735] gemm@127.0.0.1
+  gemm(const float *, const float *, float *, int, int, int) (64, 33, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Memory Throughput                 %        95.81
+    DRAM Throughput                   %        29.58
+    Duration                         ms        13.42
+    L1/TEX Cache Throughput           %        96.28
+    L2 Cache Throughput               %        22.07
+    Compute (SM) Throughput           %        62.92
+    Memory Throughput               Gbyte/s        80.92
+    Block Size                                                   256
+    Grid Size                                                   2112
+    Registers Per Thread             register/thread              32
+    Shared Memory Configuration Size           Kbyte           32.77
+    Driver Shared Memory Per Block       Kbyte/block            1.02
+    Dynamic Shared Memory Per Block       byte/block               0
+    Static Shared Memory Per Block        byte/block               0
+    Waves Per SM                                               16.50
+    Theoretical Occupancy                     %          100
+    Achieved Occupancy                        %        97.61
+  tiled_gemm(const float *, const float *, float *, int, int, int, int, int) (128, 65, 1)x(8, 8, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Memory Throughput                 %        50.14
+    DRAM Throughput                   %        28.90
+    Duration                         ms        29.83
+    L1/TEX Cache Throughput           %        50.14
+    L2 Cache Throughput               %        18.47
+    Compute (SM) Throughput           %        87.70
+    Memory Throughput               Gbyte/s        79.05
+    Block Size                                                    64
+    Grid Size                                                   8320
+    Registers Per Thread             register/thread              32
+    Shared Memory Configuration Size           Kbyte           65.54
+    Driver Shared Memory Per Block       Kbyte/block            1.02
+    Dynamic Shared Memory Per Block       byte/block             512
+    Static Shared Memory Per Block        byte/block               0
+    Waves Per SM                                               16.25
+    Theoretical Occupancy                     %          100
+    Achieved Occupancy                        %        97.88
+  tiled_gemm(const float *, const float *, float *, int, int, int, int, int) (64, 33, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Memory Throughput                 %        56.45
+    DRAM Throughput                   %        24.23
+    Duration                         ms        18.55
+    L1/TEX Cache Throughput           %        56.46
+    L2 Cache Throughput               %        12.08
+    Compute (SM) Throughput           %        86.88
+    Memory Throughput               Gbyte/s        66.25
+    Block Size                                                   256
+    Grid Size                                                   2112
+    Registers Per Thread             register/thread              32
+    Shared Memory Configuration Size           Kbyte           65.54
+    Driver Shared Memory Per Block       Kbyte/block            1.02
+    Dynamic Shared Memory Per Block      Kbyte/block            2.05
+    Static Shared Memory Per Block        byte/block               0
+    Waves Per SM                                               16.50
+    Theoretical Occupancy                     %          100
+    Achieved Occupancy                        %        98.03
+  tiled_gemm(const float *, const float *, float *, int, int, int, int, int) (32, 17, 1)x(32, 32, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Memory Throughput                 %        61.84
+    DRAM Throughput                   %        14.74
+    Duration                         ms        15.44
+    L1/TEX Cache Throughput           %        61.86
+    L2 Cache Throughput               %         7.34
+    Compute (SM) Throughput           %        72.69
+    Memory Throughput               Gbyte/s        40.31
+    Block Size                                                  1024
+    Grid Size                                                    544
+    Registers Per Thread             register/thread              32
+    Shared Memory Configuration Size           Kbyte           32.77
+    Driver Shared Memory Per Block       Kbyte/block            1.02
+    Dynamic Shared Memory Per Block      Kbyte/block            8.19
+    Static Shared Memory Per Block        byte/block               0
+    Waves Per SM                                                  17
+    Theoretical Occupancy                     %          100
+    Achieved Occupancy                        %        98.65

@@ -1,0 +1,18 @@
+  convolution_1D_tiled(float *, float *, float *, int) (131072, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Memory Throughput                 %        87.70
+    DRAM Throughput                   %        87.70
+    Duration                         us       548.74
+    L1/TEX Cache Throughput           %        48.93
+    L2 Cache Throughput               %        31.72
+    Compute (SM) Throughput           %        59.98
+    Memory Throughput               Gbyte/s       239.83
+    Block Size                                                   128
+    Grid Size                                                 131072
+    Registers Per Thread             register/thread              22
+    Shared Memory Configuration Size           Kbyte          233.47
+    Driver Shared Memory Per Block       Kbyte/block            1.02
+    Dynamic Shared Memory Per Block       byte/block               0
+    Static Shared Memory Per Block        byte/block             528
+    Waves Per SM                                                 512
+    Theoretical Occupancy                     %          100
+    Achieved Occupancy                        %        88.25

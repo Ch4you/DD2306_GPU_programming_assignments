@@ -1,8 +1,22 @@
-==PROF== Connected to process 1938 (/home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q1/conv_128)
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 4348 (/home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q1/conv_128)
 ==WARNING== Unable to access the following 14 metrics: ctc__rx_bytes_data_user.sum, ctc__rx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__rx_bytes_data_user.sum.per_second, ctc__tx_bytes_data_user.sum, ctc__tx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__tx_bytes_data_user.sum.per_second, pcie__read_bytes.avg.per_second, pcie__read_bytes.max.per_second, pcie__read_bytes.min.per_second, pcie__read_bytes.sum.per_second, pcie__write_bytes.avg.per_second, pcie__write_bytes.max.per_second, pcie__write_bytes.min.per_second, pcie__write_bytes.sum.per_second. If profiling on a MIG instance, it is not possible to collect metrics from GPU units that are shared with other MIG instances.
 
-==PROF== Profiling "convolution_1D_tiled": 0%==ERROR== An error was reported by the driver:
-==ERROR== Cannot lock GPU clock frequencies on MIG! Try locking the clocks externally (e.g. using 'nvidia-smi --lock-gpu-clocks=tdp,tdp') or profile without fixed frequencies (see '--clock-control').
-==ERROR== Failed to profile "convolution_1D_tiled" in process 1938
-==PROF== Trying to shutdown target application
-==ERROR== The application returned an error code (9).
+==PROF== Profiling "convolution_1D_tiled": 0%....50%....100% - 37 passes
+Timing - Allocated host memory. 		Elasped 9 microseconds 
+Timing - Allocated device memory. 		Elasped 970542 microseconds 
+Timing - Initialized data on the host. 		Elasped 269266 microseconds 
+Timing - Copying data to the GPU.. 		Elasped 13800 microseconds 
+Timing - Finished 1D convolution(basic). 		Elasped 960 microseconds 
+N[0] = 0.840188, P[0] = 1.233154
+N[1] = 0.394383, P[1] = 1.405636
+N[2] = 0.783099, P[2] = 1.397376
+N[3] = 0.798440, P[3] = 1.596605
+N[4] = 0.911647, P[4] = 1.297674
+Timing - Copying output P to the CPU and print out the results. 		Elasped 3995 microseconds 
+Timing - Finished 1D convolution(tiled). 		Elasped 2135499 microseconds 
+Timing - Copying output P to the CPU and print out the results. 		Elasped 32769 microseconds 
+PASS: basic and tiled results match.
+Timing - Free memory resources. 		Elasped 9641 microseconds 
+==PROF== Disconnected from process 4348
+==PROF== Report: /home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q1/ncu_tiled_carveout0.ncu-rep

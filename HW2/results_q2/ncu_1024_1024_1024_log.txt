@@ -1,8 +1,19 @@
-==PROF== Connected to process 2213 (/home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q2/gemm)
+==WARNING== Note: Running with unmodified GPU clocks. If not controlled otherwise, profiling results may be inconsistent.
+==PROF== Connected to process 4531 (/home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q2/gemm)
 ==WARNING== Unable to access the following 14 metrics: ctc__rx_bytes_data_user.sum, ctc__rx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__rx_bytes_data_user.sum.per_second, ctc__tx_bytes_data_user.sum, ctc__tx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__tx_bytes_data_user.sum.per_second, pcie__read_bytes.avg.per_second, pcie__read_bytes.max.per_second, pcie__read_bytes.min.per_second, pcie__read_bytes.sum.per_second, pcie__write_bytes.avg.per_second, pcie__write_bytes.max.per_second, pcie__write_bytes.min.per_second, pcie__write_bytes.sum.per_second. If profiling on a MIG instance, it is not possible to collect metrics from GPU units that are shared with other MIG instances.
 
-==PROF== Profiling "gemm": 0%==ERROR== An error was reported by the driver:
-==ERROR== Cannot lock GPU clock frequencies on MIG! Try locking the clocks externally (e.g. using 'nvidia-smi --lock-gpu-clocks=tdp,tdp') or profile without fixed frequencies (see '--clock-control').
-==ERROR== Failed to profile "gemm" in process 2213
-==PROF== Trying to shutdown target application
-==ERROR== The application returned an error code (9).
+==PROF== Profiling "gemm": 0%....50%....100% - 37 passes
+==PROF== Profiling "tiled_gemm": 0%....50%....100% - 37 passes
+==PROF== Profiling "tiled_gemm": 0%....50%....100% - 37 passes
+==PROF== Profiling "tiled_gemm": 0%....50%....100% - 37 passes
+Matrix multiplication: A(1024 x 1024) * B(1024 x 1024) = C(1024 x 1024)
+gemm()           block 16x16:     -1.000 ms  PASS
+CSV,1024,1024,1024,gemm,16,16,-1.000000,PASS
+tiled_gemm()     tile  8x8 :     -1.000 ms  PASS
+CSV,1024,1024,1024,tiled,8,8,-1.000000,PASS
+tiled_gemm()     tile 16x16:     -1.000 ms  PASS
+CSV,1024,1024,1024,tiled,16,16,-1.000000,PASS
+tiled_gemm()     tile 32x32:     -1.000 ms  PASS
+CSV,1024,1024,1024,tiled,32,32,-1.000000,PASS
+==PROF== Disconnected from process 4531
+==PROF== Report: /home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q2/ncu_1024_1024_1024.ncu-rep
