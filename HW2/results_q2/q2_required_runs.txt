@@ -1,0 +1,25 @@
+=== A 1024x1024, B 1024x1024 ===
+Matrix multiplication: A(1024 x 1024) * B(1024 x 1024) = C(1024 x 1024)
+CPU reference:                    150.431 ms
+CSV,1024,1024,1024,cpu,0,0,150.431482,REF
+gemm()           block 16x16:      3.225 ms  PASS
+CSV,1024,1024,1024,gemm,16,16,3.225184,PASS
+tiled_gemm()     tile  8x8 :      7.266 ms  PASS
+CSV,1024,1024,1024,tiled,8,8,7.265651,PASS
+tiled_gemm()     tile 16x16:      4.392 ms  PASS
+CSV,1024,1024,1024,tiled,16,16,4.392169,PASS
+tiled_gemm()     tile 32x32:      3.450 ms  PASS
+CSV,1024,1024,1024,tiled,32,32,3.450317,PASS
+
+=== A 513x8192, B 8192x1023 ===
+Matrix multiplication: A(513 x 8192) * B(8192 x 1023) = C(513 x 1023)
+CPU reference:                    596.357 ms
+CSV,513,8192,1023,cpu,0,0,596.357278,REF
+gemm()           block 16x16:     13.410 ms  PASS
+CSV,513,8192,1023,gemm,16,16,13.410461,PASS
+tiled_gemm()     tile  8x8 :     29.832 ms  PASS
+CSV,513,8192,1023,tiled,8,8,29.832027,PASS
+tiled_gemm()     tile 16x16:     18.547 ms  PASS
+CSV,513,8192,1023,tiled,16,16,18.547453,PASS
+tiled_gemm()     tile 32x32:     15.454 ms  PASS
+CSV,513,8192,1023,tiled,32,32,15.453850,PASS
