@@ -1,0 +1,85 @@
+Timing - Allocated host memory. 		Elasped 24 microseconds 
+Timing - Allocated device memory. 		Elasped 379542 microseconds 
+Timing - Initialized data on the host. 		Elasped 276726 microseconds 
+Timing - Copying data to the GPU.. 		Elasped 13947 microseconds 
+Timing - Finished 1D convolution(basic). 		Elasped 671 microseconds 
+N[0] = 0.840188, P[0] = 1.233154
+N[1] = 0.394383, P[1] = 1.405636
+N[2] = 0.783099, P[2] = 1.397376
+N[3] = 0.798440, P[3] = 1.596605
+N[4] = 0.911647, P[4] = 1.297674
+Timing - Copying output P to the CPU and print out the results. 		Elasped 4348 microseconds 
+Timing - Finished 1D convolution(tiled). 		Elasped 626 microseconds 
+Timing - Copying output P to the CPU and print out the results. 		Elasped 33401 microseconds 
+PASS: basic and tiled results match.
+BENCH,16777216,128,-1,10,493.946,593.123
+Timing - Free memory resources. 		Elasped 12059 microseconds 
+Generating '/tmp/nsys-report-37cb.qdstrm'
+[1/7] [0%                          ] nsys_tiled.nsys-rep[1/7] [0%                          ] nsys_tiled.nsys-rep[1/7] [===24%                      ] nsys_tiled.nsys-rep[1/7] [====25%                     ] nsys_tiled.nsys-rep[1/7] [====26%                     ] nsys_tiled.nsys-rep[1/7] [====28%                     ] nsys_tiled.nsys-rep[1/7] [=========46%                ] nsys_tiled.nsys-rep[1/7] [========================97% ] nsys_tiled.nsys-rep[1/7] [========================100%] nsys_tiled.nsys-rep[1/7] [========================100%] nsys_tiled.nsys-rep
+[2/7] [0%                          ] nsys_tiled.sqlite[2/7] [1%                          ] nsys_tiled.sqlite[2/7] [2%                          ] nsys_tiled.sqlite[2/7] [3%                          ] nsys_tiled.sqlite[2/7] [4%                          ] nsys_tiled.sqlite[2/7] [5%                          ] nsys_tiled.sqlite[2/7] [6%                          ] nsys_tiled.sqlite[2/7] [7%                          ] nsys_tiled.sqlite[2/7] [8%                          ] nsys_tiled.sqlite[2/7] [9%                          ] nsys_tiled.sqlite[2/7] [10%                         ] nsys_tiled.sqlite[2/7] [11%                         ] nsys_tiled.sqlite[2/7] [12%                         ] nsys_tiled.sqlite[2/7] [13%                         ] nsys_tiled.sqlite[2/7] [14%                         ] nsys_tiled.sqlite[2/7] [=15%                        ] nsys_tiled.sqlite[2/7] [=16%                        ] nsys_tiled.sqlite[2/7] [=17%                        ] nsys_tiled.sqlite[2/7] [==18%                       ] nsys_tiled.sqlite[2/7] [==19%                       ] nsys_tiled.sqlite[2/7] [==20%                       ] nsys_tiled.sqlite[2/7] [==21%                       ] nsys_tiled.sqlite[2/7] [===22%                      ] nsys_tiled.sqlite[2/7] [===23%                      ] nsys_tiled.sqlite[2/7] [===24%                      ] nsys_tiled.sqlite[2/7] [====25%                     ] nsys_tiled.sqlite[2/7] [====26%                     ] nsys_tiled.sqlite[2/7] [====27%                     ] nsys_tiled.sqlite[2/7] [====28%                     ] nsys_tiled.sqlite[2/7] [=====29%                    ] nsys_tiled.sqlite[2/7] [=====30%                    ] nsys_tiled.sqlite[2/7] [=====31%                    ] nsys_tiled.sqlite[2/7] [=====32%                    ] nsys_tiled.sqlite[2/7] [======33%                   ] nsys_tiled.sqlite[2/7] [======34%                   ] nsys_tiled.sqlite[2/7] [======35%                   ] nsys_tiled.sqlite[2/7] [=======36%                  ] nsys_tiled.sqlite[2/7] [=======37%                  ] nsys_tiled.sqlite[2/7] [=======38%                  ] nsys_tiled.sqlite[2/7] [=======39%                  ] nsys_tiled.sqlite[2/7] [========40%                 ] nsys_tiled.sqlite[2/7] [========41%                 ] nsys_tiled.sqlite[2/7] [========42%                 ] nsys_tiled.sqlite[2/7] [=========43%                ] nsys_tiled.sqlite[2/7] [=========44%                ] nsys_tiled.sqlite[2/7] [=========45%                ] nsys_tiled.sqlite[2/7] [=========46%                ] nsys_tiled.sqlite[2/7] [==========47%               ] nsys_tiled.sqlite[2/7] [==========48%               ] nsys_tiled.sqlite[2/7] [==========49%               ] nsys_tiled.sqlite[2/7] [===========50%              ] nsys_tiled.sqlite[2/7] [===========51%              ] nsys_tiled.sqlite[2/7] [===========52%              ] nsys_tiled.sqlite[2/7] [===========53%              ] nsys_tiled.sqlite[2/7] [============54%             ] nsys_tiled.sqlite[2/7] [============55%             ] nsys_tiled.sqlite[2/7] [============56%             ] nsys_tiled.sqlite[2/7] [============57%             ] nsys_tiled.sqlite[2/7] [=============58%            ] nsys_tiled.sqlite[2/7] [=============59%            ] nsys_tiled.sqlite[2/7] [=============60%            ] nsys_tiled.sqlite[2/7] [==============61%           ] nsys_tiled.sqlite[2/7] [==============62%           ] nsys_tiled.sqlite[2/7] [==============63%           ] nsys_tiled.sqlite[2/7] [==============64%           ] nsys_tiled.sqlite[2/7] [===============65%          ] nsys_tiled.sqlite[2/7] [===============66%          ] nsys_tiled.sqlite[2/7] [===============67%          ] nsys_tiled.sqlite[2/7] [================68%         ] nsys_tiled.sqlite[2/7] [================69%         ] nsys_tiled.sqlite[2/7] [================70%         ] nsys_tiled.sqlite[2/7] [================71%         ] nsys_tiled.sqlite[2/7] [=================72%        ] nsys_tiled.sqlite[2/7] [=================73%        ] nsys_tiled.sqlite[2/7] [=================74%        ] nsys_tiled.sqlite[2/7] [==================75%       ] nsys_tiled.sqlite[2/7] [==================76%       ] nsys_tiled.sqlite[2/7] [==================77%       ] nsys_tiled.sqlite[2/7] [==================78%       ] nsys_tiled.sqlite[2/7] [===================79%      ] nsys_tiled.sqlite[2/7] [===================80%      ] nsys_tiled.sqlite[2/7] [===================81%      ] nsys_tiled.sqlite[2/7] [===================82%      ] nsys_tiled.sqlite[2/7] [====================83%     ] nsys_tiled.sqlite[2/7] [====================84%     ] nsys_tiled.sqlite[2/7] [====================85%     ] nsys_tiled.sqlite[2/7] [=====================86%    ] nsys_tiled.sqlite[2/7] [=====================87%    ] nsys_tiled.sqlite[2/7] [=====================88%    ] nsys_tiled.sqlite[2/7] [=====================89%    ] nsys_tiled.sqlite[2/7] [======================90%   ] nsys_tiled.sqlite[2/7] [======================91%   ] nsys_tiled.sqlite[2/7] [======================92%   ] nsys_tiled.sqlite[2/7] [=======================93%  ] nsys_tiled.sqlite[2/7] [=======================94%  ] nsys_tiled.sqlite[2/7] [=======================95%  ] nsys_tiled.sqlite[2/7] [=======================96%  ] nsys_tiled.sqlite[2/7] [========================97% ] nsys_tiled.sqlite[2/7] [========================98% ] nsys_tiled.sqlite[2/7] [========================99% ] nsys_tiled.sqlite[2/7] [========================100%] nsys_tiled.sqlite[2/7] [========================100%] nsys_tiled.sqlite
+[3/7] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)   Med (ns)   Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ----------  ---------  --------  ---------  -----------  ----------------------
+     80.3        633867069         14  45276219.2  8266400.0      1328  232728941   67728102.8  poll                  
+     16.7        131546138        879    149654.3     3210.0      1000   23134211     913204.4  ioctl                 
+      2.5         19407842        146    132930.4     1299.0      1002   19117564    1582017.7  fopen                 
+      0.3          2084936          8    260617.0   281987.5    148973     364073      81614.9  sem_timedwait         
+      0.2          1257463         22     57157.4     6521.0      3077     817575     171668.1  mmap64                
+      0.1           426507          2    213253.5   213253.5    197964     228543      21622.6  pthread_create        
+      0.0           343027          1    343027.0   343027.0    343027     343027          0.0  pthread_cond_wait     
+      0.0           236276         51      4632.9     2477.0      1345      22548       4520.7  open64                
+      0.0           154658         10     15465.8    14505.5     13297      21198       2507.0  fgets                 
+      0.0           136074         15      9071.6     6091.0      1919      48587      11831.9  mmap                  
+      0.0            31654          7      4522.0     4237.0      2117       8510       2562.4  munmap                
+      0.0            25936          6      4322.7     3371.0      1417      11308       3566.1  fclose                
+      0.0            25699          6      4283.2     5107.5      1233       6598       2246.9  open                  
+      0.0            22695          8      2836.9     2959.5      1709       3593        546.1  write                 
+      0.0            20658         11      1878.0     1928.0      1481       2140        200.2  read                  
+      0.0            12484          3      4161.3     3844.0      3590       5050        780.0  pipe2                 
+      0.0             9959          2      4979.5     4979.5      4439       5520        764.4  socket                
+      0.0             6698          1      6698.0     6698.0      6698       6698          0.0  connect               
+      0.0             5932          2      2966.0     2966.0      1708       4224       1779.1  pthread_cond_broadcast
+      0.0             5470          2      2735.0     2735.0      2606       2864        182.4  fwrite                
+      0.0             1911          1      1911.0     1911.0      1911       1911          0.0  bind                  
+      0.0             1664          1      1664.0     1664.0      1664       1664          0.0  listen                
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)   Med (ns)   Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ----------  ---------  --------  ---------  -----------  ----------------------
+     62.7        113915514          3  37971838.0    93859.0     83022  113738633   65615969.5  cudaMalloc            
+     28.4         51681982          5  10336396.4  6942722.0     25275   33400708   13200864.8  cudaMemcpy            
+      6.0         10816930          2   5408465.0  5408465.0   4909618    5907312     705476.2  cudaEventSynchronize  
+      1.5          2788925          3    929641.7   559778.0    536299    1692848     661060.3  cudaFree              
+      1.2          2171854          3    723951.3   595667.0    493359    1082828     314977.9  cudaDeviceSynchronize 
+      0.1           266690         24     11112.1     2695.5      2174     168268      33949.5  cudaLaunchKernel      
+      0.0            12850          2      6425.0     6425.0       761      12089       8010.1  cudaEventCreate       
+      0.0            11772          4      2943.0     2298.0      1666       5510       1758.6  cudaEventRecord       
+      0.0             2430          1      2430.0     2430.0      2430       2430          0.0  cuModuleGetLoadingMode
+      0.0             1069          2       534.5      534.5       227        842        434.9  cudaEventDestroy      
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)                          Name                        
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  ----------------------------------------------------
+     54.6          7097045         12  591420.4  591692.5    590429    592029        552.1  convolution_1D_tiled(float *, float *, float *, int)
+     45.4          5900988         12  491749.0  491661.0    491261    492349        369.1  convolution_1D_basic(float *, float *, float *, int)
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count   Avg (ns)    Med (ns)   Min (ns)  Max (ns)  StdDev (ns)           Operation          
+ --------  ---------------  -----  ----------  ----------  --------  --------  -----------  ----------------------------
+     72.8         36623004      2  18311502.0  18311502.0   4227109  32395895   19918339.6  [CUDA memcpy Device-to-Host]
+     27.2         13695435      3   4565145.0   6844309.0      1056   6850070    3952618.1  [CUDA memcpy Host-to-Device]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
+ ----------  -----  --------  --------  --------  --------  -----------  ----------------------------
+    134.218      3    44.739    67.109     0.000    67.109       38.745  [CUDA memcpy Host-to-Device]
+    134.218      2    67.109    67.109    67.109    67.109        0.000  [CUDA memcpy Device-to-Host]
+
+Generated:
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q1/nsys_tiled.nsys-rep
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q1/nsys_tiled.sqlite

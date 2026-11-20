@@ -1,0 +1,8 @@
+==PROF== Connected to process 1836 (/home/jovyan/DD2306_GPU_programming_assignments/HW2/results_q1/conv_128)
+==WARNING== Unable to access the following 14 metrics: ctc__rx_bytes_data_user.sum, ctc__rx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__rx_bytes_data_user.sum.per_second, ctc__tx_bytes_data_user.sum, ctc__tx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__tx_bytes_data_user.sum.per_second, pcie__read_bytes.avg.per_second, pcie__read_bytes.max.per_second, pcie__read_bytes.min.per_second, pcie__read_bytes.sum.per_second, pcie__write_bytes.avg.per_second, pcie__write_bytes.max.per_second, pcie__write_bytes.min.per_second, pcie__write_bytes.sum.per_second. If profiling on a MIG instance, it is not possible to collect metrics from GPU units that are shared with other MIG instances.
+
+==PROF== Profiling "convolution_1D_tiled": 0%==ERROR== An error was reported by the driver:
+==ERROR== Cannot lock GPU clock frequencies on MIG! Try locking the clocks externally (e.g. using 'nvidia-smi --lock-gpu-clocks=tdp,tdp') or profile without fixed frequencies (see '--clock-control').
+==ERROR== Failed to profile "convolution_1D_tiled" in process 1836
+==PROF== Trying to shutdown target application
+==ERROR== The application returned an error code (9).
