@@ -60,7 +60,7 @@ done
 
 # --- 4. Nsight Compute: the matmul kernel of the optimized build ----------
 # If this fails with ERR_NVGPUCTRPERM the container does not allow GPU counters.
-ncu --set full -k regex:matmul -s 20 -c 3 --force-overwrite -o "$OUT/ncu_warp" \
+ncu --clock-control none --set full -k regex:matmul -s 20 -c 3 --force-overwrite -o "$OUT/ncu_warp" \
     ./run_warp stories15M.bin -t 0 -s 1 -n 8 -i "Once upon a time" \
     > "$OUT/ncu_warp_log.txt" 2>&1
 ncu -i "$OUT/ncu_warp.ncu-rep" --page details > "$OUT/ncu_warp_details.txt" 2>&1

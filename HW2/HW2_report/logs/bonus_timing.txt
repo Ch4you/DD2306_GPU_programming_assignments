@@ -1,0 +1,17 @@
+=== CPU ===
+   Tot. Simulation Time (s) = 29.2209
+   Mover Time / Cycle   (s) = 1.70734
+   Interp. Time / Cycle (s) = 1.01292
+=== GPU ===
+   Tot. Simulation Time (s) = 13.8354
+   Mover Time / Cycle   (s) = 0.101455
+   Interp. Time / Cycle (s) = 1.03017
+=== GPU mover breakdown (per species and cycle) ===
+GPU mover species 0: alloc+H2D 18.1253 ms, kernel 1.57152 ms, total with D2H 25.5046 ms
+GPU mover species 1: alloc+H2D 53.8218 ms, kernel 0.974304 ms, total with D2H 60.5843 ms
+GPU mover species 2: alloc+H2D 11.563 ms, kernel 1.46362 ms, total with D2H 18.8322 ms
+GPU mover species 3: alloc+H2D 11.3758 ms, kernel 0.976576 ms, total with D2H 18.1671 ms
+GPU mover species 0: alloc+H2D 11.4615 ms, kernel 1.47722 ms, total with D2H 18.7364 ms
+GPU mover species 1: alloc+H2D 11.2186 ms, kernel 0.97584 ms, total with D2H 17.9726 ms
+GPU mover species 2: alloc+H2D 25.8251 ms, kernel 1.46246 ms, total with D2H 33.079 ms
+GPU mover species 3: alloc+H2D 23.9417 ms, kernel 0.977472 ms, total with D2H 30.719 ms

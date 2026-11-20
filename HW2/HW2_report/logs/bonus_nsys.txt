@@ -1,0 +1,14 @@
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)   Med (ns)   Min (ns)  Max (ns)  StdDev (ns)
+ --------  ---------------  ---------  ---------  ---------  --------  --------  -----------  ------------------------------------
+    100.0         14493692         12  1207807.7  1233047.5    848666   1471286     277395.5  mover_kernel(float *, float *, float
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)   Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation
+ --------  ---------------  -----  ---------  --------  --------  --------  -----------  ----------------------------
+     74.0        186931814    180  1038510.1   13359.5     13248   5836022    1693812.2  [CUDA memcpy Host-to-Device]
+     26.0         65751308     72   913212.6  905658.0    897049   1115192      31822.8  [CUDA memcpy Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report

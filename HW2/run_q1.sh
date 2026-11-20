@@ -57,7 +57,7 @@ nsys profile --trace=cuda,osrt --stats=true --force-overwrite=true \
 # If this fails with ERR_NVGPUCTRPERM, the container does not allow GPU counters
 # and the ncu part has to be run elsewhere or with elevated permission.
 for K in tiled basic; do
-  ncu --set full -k "regex:convolution_1D_$K" -c 1 --force-overwrite \
+  ncu --clock-control none --set full -k "regex:convolution_1D_$K" -c 1 --force-overwrite \
       -o "$OUT/ncu_$K" "$OUT/conv_$DEFT" 16777216 0 \
       > "$OUT/ncu_${K}_log.txt" 2>&1
   ncu -i "$OUT/ncu_$K.ncu-rep" --page details > "$OUT/ncu_${K}_details.txt" 2>&1
@@ -65,7 +65,7 @@ done
 
 # ncu for carveout 0 and 100 (shows the resulting shared memory configuration / occupancy)
 for C in 0 100; do
-  ncu --set full -k regex:convolution_1D_tiled -c 1 --force-overwrite \
+  ncu --clock-control none --set full -k regex:convolution_1D_tiled -c 1 --force-overwrite \
       -o "$OUT/ncu_tiled_carveout$C" "$OUT/conv_$DEFT" 16777216 0 $C \
       > "$OUT/ncu_tiled_carveout${C}_log.txt" 2>&1
   ncu -i "$OUT/ncu_tiled_carveout$C.ncu-rep" --page details > "$OUT/ncu_tiled_carveout${C}_details.txt" 2>&1

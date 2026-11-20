@@ -37,7 +37,7 @@ cat "$OUT/size_sweep.csv"
 # If this fails with ERR_NVGPUCTRPERM the container does not allow GPU counters.
 for CASE in "1024 1024 1024" "513 8192 1023"; do
   TAG=$(echo "$CASE" | tr ' ' '_')
-  NOCPU=1 ncu --set full -k regex:gemm --force-overwrite \
+  NOCPU=1 ncu --clock-control none --set full -k regex:gemm --force-overwrite \
       -o "$OUT/ncu_$TAG" "$BIN" $CASE 0 8 8 16 16 32 32 \
       > "$OUT/ncu_${TAG}_log.txt" 2>&1
   ncu -i "$OUT/ncu_$TAG.ncu-rep" --page details > "$OUT/ncu_${TAG}_details.txt" 2>&1

@@ -1,0 +1,24 @@
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)           Name
+ --------  ---------------  ---------  ----------  --------  --------  ---------  -----------  ----------------------
+     62.4        207220060       5505     37642.2   49581.0      2282    9679905     138173.5  cudaMemcpy
+     35.4        117622182          6  19603697.0    3161.0      1638  117472517   47945765.7  cudaMalloc
+      2.0          6590181       2752      2394.7    2252.0      2022     108545       2063.6  cudaLaunchKernel
+      0.1           394251          6     65708.5    4894.5      2885     219830      97581.2  cudaFree
+      0.0             2217          1      2217.0    2217.0      2217       2217          0.0  cuModuleGetLoadingMode
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  ----------------------------
+    100.0        155037738       2752   56336.4   40959.0     40031    310622      45257.7  matmul_rows(float *, const f
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation
+ --------  ---------------  -----  --------  --------  --------  --------  -----------  ----------------------------
+     82.8         12838156   2753    4663.3    1248.0       767   9501281     181061.0  [CUDA memcpy Host-to-Device]
+     17.2          2660014   2752     966.6     864.0       863      4545        509.6  [CUDA memcpy Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report

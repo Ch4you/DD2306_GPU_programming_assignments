@@ -1,0 +1,12 @@
+cpu run 1: achieved tok/s: 159.797542  matmul calls: 9546
+cpu run 2: achieved tok/s: 159.566787  matmul calls: 9546
+cpu run 3: achieved tok/s: 156.515581  matmul calls: 9546
+naive run 1: achieved tok/s: 51.515152  matmul calls: 9546
+naive run 2: achieved tok/s: 64.076544  matmul calls: 9546
+naive run 3: achieved tok/s: 64.356436  matmul calls: 9546
+resident run 1: achieved tok/s: 306.944444  matmul calls: 9546
+resident run 2: achieved tok/s: 306.944444  matmul calls: 9546
+resident run 3: achieved tok/s: 304.407713  matmul calls: 9546
+warp run 1: achieved tok/s: 821.561338  matmul calls: 9546
+warp run 2: achieved tok/s: 818.518519  matmul calls: 9546
+warp run 3: achieved tok/s: 812.500000  matmul calls: 9546

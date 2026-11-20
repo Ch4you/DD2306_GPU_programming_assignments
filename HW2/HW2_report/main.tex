@@ -11,6 +11,9 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{xurl}
 \urlstyle{same}
+\usepackage{listings}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
 
 \definecolor{linkblue}{HTML}{1F5FBF}
 \hypersetup{colorlinks=true,citecolor=linkblue,linkcolor=linkblue,urlcolor=linkblue}
@@ -31,199 +34,278 @@
 
 \setlength{\textfloatsep}{10pt plus 2pt minus 2pt}\setlength{\floatsep}{8pt plus 2pt minus 2pt}\setlength{\intextsep}{8pt plus 2pt minus 2pt}   % tighter space around floats
 
-% Marker for numbers or figures that still have to be measured and filled in.
+% Terminal-style blocks: monospaced text on a light gray background.
+\lstdefinestyle{term}{basicstyle=\ttfamily\scriptsize,columns=fixed,keepspaces=true,tabsize=4,
+  backgroundcolor=\color{black!5},frame=single,rulecolor=\color{black!25},
+  framesep=3pt,framexleftmargin=0pt,xleftmargin=0pt,xrightmargin=0pt,
+  aboveskip=0.6em,belowskip=0.4em,breaklines=true,showstringspaces=false,upquote=true}
+\lstdefinestyle{termtiny}{style=term,basicstyle=\ttfamily\tiny}
+\lstset{style=term}
+
+% Marker for numbers that still have to be measured and filled in.
 \newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
 
 \begin{document}
 \emergencystretch=3em
 
 {\large\scshape DD2306 GPU Programming, Homework 2}\par\vspace{0.6em}
-{\raggedright\Large\sffamily\bfseries Report for HW2, Group N\par}
+{\raggedright\Large\sffamily\bfseries Report for HW2, Group 67\par}
 \vspace{0.8em}
 {\large Changhe You}\quad{\small\href{mailto:changhe@kth.se}{changhe@kth.se}}\par
 \vspace{0.2em}
 
-\textbf{Environment.} NVIDIA H100 80GB HBM3 (compute capability 9.0), compiled with
-\texttt{nvcc -O3 -arch=sm\_90 -lineinfo}. All times are wall-clock CPU timer readings
-from \texttt{gettimeofday} unless stated otherwise.
+\textbf{Environment.} NVIDIA H100 80GB HBM3 (Nsight Compute reports a MIG instance), CUDA 12.5,
+\texttt{nvcc -O3 -arch=sm\_90 -lineinfo}, g++ 12.3 on Ubuntu 22.04. All scripts, logs and code are in the
+submitted zip file. Kernel times in the tables are \texttt{cudaEvent} averages after a warm-up launch unless
+stated otherwise.
 
+%==============================================================================================
 \section{Question 1: 1D Convolution}
 
-\subsection{Implementation}
-
-The mask has fixed width $W=5$, and out-of-boundary input elements are treated as $0$.
-For an output index $i$,
-\[
-  P[i]=\sum_{j=0}^{W-1} N[i+j-\lfloor W/2\rfloor]\,M[j].
-\]
-The \emph{basic} kernel assigns one thread to each output element and reads
-$N$ and $M$ directly from global memory, skipping indices outside $[0,n)$.
-The \emph{tiled} kernel assigns one block to $T=\texttt{TILE\_WIDTH}$ consecutive outputs.
-The block first cooperatively loads $T+W-1$ inputs (the tile plus a halo of
-$\lfloor W/2\rfloor=2$ elements on each side) into shared memory, writes $0$ for
-halo elements outside the array, calls \texttt{\_\_syncthreads()}, and then every
-thread computes its output from shared memory. Both kernels sum the five terms in
-the same order. Results of the two kernels are compared on the host with the
-tolerance $|a-b|\le 10^{-5}$, because floating-point results may differ in the last
-bits (different rounding or fused multiply-add choices), so exact equality is not a
-reliable test.
+\textbf{Approach.} The basic kernel uses one thread per output element and reads \texttt{N} and \texttt{M} from
+global memory. The tiled kernel uses one block per \texttt{TILE\_WIDTH} outputs; the block loads
+\texttt{TILE\_WIDTH}+4 inputs (tile plus a halo of 2 on each side, zero outside the array) into shared memory,
+calls \texttt{\_\_syncthreads()} and computes from shared memory. I added a \texttt{cudaEvent} benchmark
+(warm-up plus 100 repetitions) and made \texttt{TILE\_WIDTH} a compile-time option. Basic and tiled results are
+compared on the host with a tolerance of $10^{-5}$.
 
 \subsection{Name 3 application domains where convolutions are used}
-
-\begin{description}
-  \item[Image and video processing.] Blurring, sharpening and edge detection apply a small
-    kernel over the pixels (the 2D version of this exercise).
-  \item[Digital signal processing.] Audio filtering, smoothing of sensor data and
-    finite-impulse-response (FIR) filters are 1D convolutions.
-  \item[Deep learning.] Convolutional neural networks use convolutions as their core
-    layer for vision, speech and time-series models.
-\end{description}
+Image and video processing (blur, sharpen, edge detection), digital signal processing (audio and sensor
+filtering, FIR filters), and deep learning (convolutional neural networks).
 
 \subsection{Global memory reads and writes}
+With mask width $W=5$, array length $n$ and tile width $T$ (counts of accesses in the code, not DRAM traffic):
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+ & global reads & global writes \\
+\midrule
+basic & $2(5n-6)\approx 10n$ ($5n$ of \texttt{N}, $5n$ of \texttt{M}) & $n$ \\
+tiled & $\approx n+4n/T$ of \texttt{N}, plus $5n$ of \texttt{M} $\approx 6n$ & $n$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Example $n=16384$, $T=128$: basic 163\,828 reads, tiled 98\,812 reads (16\,892 of them for \texttt{N}), both
+16\,384 writes. \texttt{M} is still read from global memory in the tiled kernel.
 
-Let $n$ be the array length, $W=5$ the mask width, and $T$ the tile width.
-Counts refer to accesses in the code, not to DRAM traffic; in practice the five
-elements of $M$ are served by the caches.
+\subsection{Runs for N = 1024 to 16384 and the choice of tile size}
+Program output (\texttt{TILE\_WIDTH}=128; the \texttt{BENCH} line is the \texttt{cudaEvent} average over 100
+launches: N, tile, carveout, repetitions, basic $\mu$s, tiled $\mu$s):
+\lstinputlisting[style=termtiny]{logs/q1_runs.txt}
 
-\begin{description}
-  \item[Basic kernel.] Each thread reads, for every valid $j$, one element of $N$ and
-    one element of $M$. Only $6$ terms are lost at the two array ends
-    ($2+1$ on the left, $1+2$ on the right), so $N$ is read $5n-6$ times and $M$ is
-    read $5n-6$ times: $10n-12\approx 10n$ reads in total. Each thread writes one
-    output, giving $n$ writes.
-  \item[Tiled kernel (our implementation).] Each block loads $T+4$ input elements, and
-    there are $\lceil n/T\rceil$ blocks, so $N$ is read about $n+4n/T$ times (slightly
-    fewer at the array ends where ghost cells are not loaded). Our kernel still reads
-    $M[j]$ from global memory in every thread, which gives $5n$ reads of $M$. The total
-    is about $6n+4n/T$ reads and $n$ writes.
-\end{description}
-
-Tiling therefore reduces the reads of the input $N$ from about $5n$ to about
-$n(1+4/T)$, i.e.\ close to one read per element. Because $M$ is not cached in shared or
-constant memory in our kernel, the total only drops from $10n$ to about $6n$. Keeping
-$M$ in constant memory or in shared memory would bring the tiled total towards
-$n(1+4/T)$ reads. For example, with $n=16384$ and $T=128$ the counts are
-$163{,}828$ reads for the basic kernel and $98{,}812$ reads for the tiled kernel
-($16{,}892$ of them for $N$), both with $16{,}384$ writes.
-
-\subsection{Results for $N=1024,\dots,16384$}
-
-Figure~\ref{fig:q1-output} shows the program output and Table~\ref{tab:q1} lists the
-kernel times. All five runs print \texttt{PASS}, and the first outputs match a hand
-calculation, for example
-$P[0]=0.840188\cdot1.0+0.394383\cdot0.5+0.783099\cdot0.25=1.233154$.
-
-\begin{figure}[t]
-  \centering
-  \IfFileExists{fig/q1_output.png}{%
-    \includegraphics[width=\linewidth]{fig/q1_output.png}}{%
-    \fbox{\parbox{0.9\linewidth}{\centering\todo{insert screenshot fig/q1\_output.png of the runs for $N=1024$ to $16384$}}}}
-  \caption{Program output for $N=1024,2048,4096,8192,16384$.}
-  \label{fig:q1-output}
-\end{figure}
-
-\begin{table}[t]
-  \centering
-  \caption{CPU-timer kernel times with $\texttt{TILE\_WIDTH}=128$ and block size $256$ for the basic kernel.}
-  \label{tab:q1}
-  \begin{tabular}{rrr}
-    \toprule
-    $N$ & basic ($\mu$s) & tiled ($\mu$s) \\
-    \midrule
-    1024  & 94  & 17 \\
-    2048  & 94  & 16 \\
-    4096  & 97  & 18 \\
-    8192  & 93  & 17 \\
-    16384 & 103 & 18 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-These numbers should not be read as ``tiled is five times faster''. The times are almost
-independent of $N$, so they measure fixed launch overhead and not computation: even
-$N=16384$ is only 64 tiled blocks, fewer than the 132 SMs of an H100. In addition, the
-basic kernel is launched first and carries the one-time first-launch cost
-(the first CUDA call also takes about $0.2$--$0.3$\,s for context creation, visible in
-the ``Allocated device memory'' line). A fair comparison needs a warm-up launch,
-\texttt{cudaEvent} timing, repeated runs, and larger $N$.
-\todo{redo timing with warm-up, cudaEvent and repeats; replace Table~\ref{tab:q1}}
-
-\subsection{Choosing the tile size}
-
-\todo{run TILE\_WIDTH $=32,64,128,256,512,1024$ with the improved timing and report the measurements}
-
-The considerations for the choice are:
-\begin{itemize}[leftmargin=1.5em,itemsep=0.1em]
-  \item \textbf{Halo overhead.} A block loads $T+4$ elements for $T$ outputs, so the
-    redundant fraction is $4/T$: $12.5\%$ for $T=32$, but only $3\%$ for $T=128$.
-    Larger tiles amortise the halo better.
-  \item \textbf{Block size.} The block has $T$ threads, so $T$ should be a multiple of the
-    warp size $32$ and at most $1024$.
-  \item \textbf{Shared memory and occupancy.} A tile uses $4(T+4)$ bytes, which is tiny
-    (about 0.5\,KB for $T=128$), so shared memory does not limit occupancy here. The block
-    size does: very large $T$ allows few resident blocks per SM and, for small $N$,
-    leaves SMs idle because there are too few blocks.
-  \item \textbf{Parallelism for small $N$.} The number of blocks is $\lceil N/T\rceil$;
-    with $N=1024$ and $T=1024$ there is a single block on a single SM.
-\end{itemize}
-\todo{state the chosen optimal tile size and justify it with the measured data}
+The single-launch CPU timers above are dominated by launch overhead and the first-launch cost of the basic kernel
+(the \texttt{Allocated device memory} line also includes CUDA context creation), so I compared tile sizes with the
+\texttt{cudaEvent} benchmark. Tiled kernel time in $\mu$s ($N$ = array length):
+\begin{center}
+\small
+\begin{tabular}{rrrrrrrr}
+\toprule
+$N$ & basic & $T$=32 & 64 & 128 & 256 & 512 & 1024 \\
+\midrule
+1\,024        & 1.9    & 2.26  & 2.23  & 2.23  & 2.23  & 2.26  & 2.39 \\
+16\,384       & 2.2    & 3.24  & 2.92  & 2.53  & 2.45  & 2.46  & 2.54 \\
+1\,048\,576   & 31.5   & 97.2  & 39.8  & \textbf{37.5} & 39.4 & 42.4 & 49.2 \\
+16\,777\,216  & 461    & 1503  & 587   & \textbf{551}  & 579  & 634  & 739 \\
+67\,108\,864  & 1826   & 5965  & 2307  & \textbf{2184} & 2290 & 2510 & 2938 \\
+\bottomrule
+\end{tabular}
+\end{center}
+I chose $T=128$: it is the fastest for every $N\ge 2^{20}$. Small tiles lose because the halo is re-read for every
+tile ($4/T$ extra loads, 12.5\,\% at $T=32$) and there are many tiny blocks; large tiles lose because fewer blocks
+fit on an SM. For $N\le 16384$ all sizes are within noise (a few blocks only). \emph{Observation:} in my
+measurements the tiled kernel is never faster than the basic kernel (e.g.\ 551 vs 461\,$\mu$s at $N=2^{24}$).
 
 \subsection{Profiling the tiled implementation}
+Nsight Systems ($N=2^{24}$, 10 repetitions, one warm-up and one correctness launch, so 12 launches per kernel):
+\lstinputlisting[style=termtiny]{logs/q1_nsys.txt}
+At application level the hotspot is not the kernel: the kernels take 7.1 ms (tiled) and 5.9 ms (basic) in total,
+while \texttt{cudaMalloc} (114 ms) and the host--device copies (13.7 ms H2D, 36.6 ms D2H) dominate. Per launch the
+tiled kernel takes 591\,$\mu$s and the basic kernel 492\,$\mu$s. Both kernels move about 128\,MB per launch
+(64\,MB read, 64\,MB written), i.e.\ roughly 0.22--0.26\,TB/s, which is low for an H100 and consistent with a MIG
+slice.
 
-\todo{Nsight Systems: timeline and kernel/memcpy breakdown}\par
-\todo{Nsight Compute: performance hotspot (memory vs.\ compute), shared memory utilisation, achieved occupancy}\par
-\todo{effect of changing the shared memory carveout (\texttt{cudaFuncSetAttribute} with \texttt{cudaFuncAttributePreferredSharedMemoryCarveout}) on runtime}
+\todo{Nsight Compute (rerun with \texttt{--clock-control none}, see rerun\_ncu.sh): hotspot of the kernel (memory vs compute), shared memory utilization, achieved occupancy}
 
+Changing the shared memory carveout of the tiled kernel (set with \texttt{cudaFuncSetAttribute},
+$N=2^{26}$, $T=128$):
+\begin{center}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+carveout & default & 0\,\% & 25\,\% & 50\,\% & 75\,\% & 100\,\% \\
+tiled time ($\mu$s) & 2184 & 6941 & 2187 & 2209 & 2209 & 2209 \\
+\bottomrule
+\end{tabular}
+\end{center}
+A larger carveout does not help: the tile needs only 0.5\,KB of shared memory per block, so every setting from
+25\,\% up gives the same time (they differ by about 1\,\%). Only the 0\,\% setting changes
+the result, and it makes the kernel about 3.2$\times$ slower.
+
+%==============================================================================================
 \section{Question 2: Tiled Matrix Multiplication}
 
-\subsection{Implementation}
+\textbf{Approach.} \texttt{hw2-gemm.cu} keeps the basic \texttt{gemm()} (one thread per element of C, $16\times16$ blocks)
+and adds \texttt{tiled\_gemm(a,b,c,m,n,p,tileX,tileY)}: a block of \texttt{tileX}$\times$\texttt{tileY} threads
+computes one tile of C, loads tiles of A and B into dynamic shared memory (the k-step is \texttt{tileX}),
+synchronises, accumulates, and synchronises again; out-of-range elements load as 0, so sizes such as 513 and 1023
+need no special case. The program runs \texttt{gemm()}, then \texttt{tiled\_gemm()} for each tile size, compares
+every result with a CPU reference (inputs are multiples of 1/16, so float sums are exact) and prints the timings.
 
-We compute $C=AB$ with $A\in\mathbb{R}^{m\times n}$, $B\in\mathbb{R}^{n\times p}$ in
-single precision. \texttt{gemm()} is the basic kernel from Assignment 1 (one thread per
-element of $C$, $16\times16$ blocks, all operands from global memory).
-\texttt{tiled\_gemm(a,b,c,m,n,p,tileX,tileY)} uses blocks of $\texttt{tileX}\times\texttt{tileY}$
-threads, each block computing a $\texttt{tileY}\times\texttt{tileX}$ tile of $C$.
-In each step the block advances along $k$ by $\texttt{tileX}$, cooperatively stages a
-$\texttt{tileY}\times\texttt{tileX}$ tile of $A$ and a $\texttt{tileX}\times\texttt{tileX}$
-tile of $B$ in dynamically allocated shared memory (loads are coalesced along rows),
-synchronises, accumulates, and synchronises again before the next step. Elements outside
-the matrices are loaded as $0$, so dimensions such as $513$ and $1023$ need no special
-case. The program runs \texttt{gemm()} first, then \texttt{tiled\_gemm()} for several tile
-sizes, and compares each result with a CPU reference (triple loop). The inputs are small
-multiples of $1/16$, so all products and partial sums are exactly representable in float
-and the results are independent of summation order. Kernel times are averages over
-repeated launches measured with \texttt{cudaEvent} after one warm-up launch.
+\subsection{Global memory reads of tiled\_gemm() versus gemm()}
+\texttt{gemm()}: every element of C reads $2n$ values, so $2mnp$ reads. \texttt{tiled\_gemm()}: each block reads a
+\texttt{tileY}$\times n$ strip of A and an $n\times$\texttt{tileX} strip of B once, so
+$mnp\,(1/\texttt{tileX}+1/\texttt{tileY})$ reads, i.e.\ $2mnp/T$ for square tiles. Global reads drop by a factor of
+$T$ (8$\times$, 16$\times$, 32$\times$ for the tile sizes used). Both kernels write $mp$ values.
 
-\subsection{Global memory reads of \texttt{tiled\_gemm()} versus \texttt{gemm()}}
+\subsection{A, B = 1024$\times$1024 and 513$\times$8192 by 8192$\times$1023, three tile sizes}
+\lstinputlisting{logs/q2_runs.txt}
+(The program also prints machine-readable lines starting with \texttt{CSV}; they are omitted here.)
 
-In \texttt{gemm()} every element of $C$ reads one row of $A$ and one column of $B$,
-i.e.\ $2n$ values, so the kernel performs $2mnp$ global reads in total.
-In \texttt{tiled\_gemm()} a block reads, for its $\texttt{tileY}\times\texttt{tileX}$ tile
-of $C$, a strip of $\texttt{tileY}\times n$ values of $A$ and $n\times\texttt{tileX}$ values
-of $B$, each element exactly once. There are $\frac{m}{\texttt{tileY}}\cdot\frac{p}{\texttt{tileX}}$ blocks, so
-\[
-  \text{reads}_{\text{tiled}} = mnp\left(\frac{1}{\texttt{tileX}}+\frac{1}{\texttt{tileY}}\right)
-  \;\overset{\texttt{tileX}=\texttt{tileY}=T}{=}\;\frac{2mnp}{T}.
-\]
-Each global value is thus reused by $T$ threads from shared memory, and global reads drop
-by a factor of $T$ (for example $8\times$, $16\times$ and $32\times$ for $T=8,16,32$).
-Both kernels write $mp$ values. At the matrix edges the tiled kernel does not read the
-padding, so the formula is exact when the dimensions are multiples of the tile size and
-an upper bound otherwise.
-
-\subsection{Results: $1024\times1024$ times $1024\times1024$}
-\todo{insert screenshot of the run with 3 tile sizes and explain the timings}
-
-\subsection{Results: $513\times8192$ times $8192\times1023$}
-\todo{insert screenshot and explain; discuss the non-multiple dimensions 513 and 1023 (partially filled edge tiles, wasted threads)}
+Explanation. All kernels pass. On both inputs \texttt{gemm()} is the fastest, and \texttt{tiled\_gemm()} improves
+steadily with the tile size: $8\times8$ is 2.25$\times$ and 2.22$\times$ slower than \texttt{gemm()}, $16\times16$
+1.36$\times$ and 1.38$\times$, and $32\times32$ is within 7--15\,\% of it. A larger tile means fewer global loads
+(factor $T$) and fewer barriers per output, and $8\times8$ blocks have only 64 threads. The tiled kernel here does
+not beat the basic one on an H100: its global loads are coalesced and the 1024-wide rows are served well by the
+L1/L2 caches, so the explicit tiling mostly adds shared-memory traffic, index arithmetic and two barriers per step.
+For $513\times1023$ the grid does not divide evenly (513 = 16$\cdot$32 + 1): the last row of blocks does almost
+no useful work (17 block rows for 16.03 rows of work at $32\times32$, 33 for 32.06 at $16\times16$). The CPU reference is 47$\times$ (1024 case) and 44$\times$ (513 case) slower than
+\texttt{gemm()}.
 
 \subsection{Profiling: achieved occupancy and shared memory}
-\todo{Nsight Compute table for both inputs: achieved occupancy, static and dynamic shared memory per block, for the three tile sizes}
+\todo{Nsight Compute table for both inputs: achieved occupancy and static/dynamic shared memory per block for gemm and the three tile sizes (rerun with \texttt{--clock-control none}, see rerun\_ncu.sh)}
 
-\subsection{Runtime for increasing matrix sizes}
-\todo{bar chart of CPU, gemm() and three tiled kernels for sizes $32$ to $2048$; discuss whether profiling reveals anything unexpected}
+Shared memory per block from the code (dynamic, $\texttt{tileY}\cdot\texttt{tileX}+\texttt{tileX}^2$ floats):
+$8\times8$: 512\,B, $16\times16$: 2\,KB, $32\times32$: 8\,KB; \texttt{gemm()} uses none.
 
+\subsection{Eight to ten matrix sizes: runtime comparison}
+Square matrices $m=n=p$ from 32 to 2048 (9 sizes), logarithmic time axis:
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ybar,width=\linewidth,height=6.2cm,ymode=log,log origin=infty,bar width=3.2pt,
+  enlarge x limits=0.07,symbolic x coords={32,64,128,256,512,768,1024,1536,2048},xtick=data,
+  xlabel={matrix size $m=n=p$},ylabel={time (ms)},ymin=0.002,ymax=3000,
+  legend style={at={(0.5,1.03)},anchor=south,legend columns=5,font=\footnotesize,draw=none},
+  tick label style={font=\footnotesize},label style={font=\footnotesize}]
+\addplot table[x=size,y=cpu]  {logs/q2_pivot.dat};
+\addplot table[x=size,y=gemm] {logs/q2_pivot.dat};
+\addplot table[x=size,y=t8]   {logs/q2_pivot.dat};
+\addplot table[x=size,y=t16]  {logs/q2_pivot.dat};
+\addplot table[x=size,y=t32]  {logs/q2_pivot.dat};
+\legend{CPU,gemm,tiled 8x8,tiled 16x16,tiled 32x32}
+\end{axis}
+\end{tikzpicture}
+\caption{Runtime of the CPU reference, \texttt{gemm()} and \texttt{tiled\_gemm()} (three tile sizes).}
+\end{figure}
+
+Both GPU versions are 46$\times$ faster than the CPU from size 1024 on (CPU 1213 ms, \texttt{gemm()} 26.2 ms at
+2048); for the smallest sizes (32--64) the kernels take 3--8\,$\mu$s and are launch-bound. \emph{Unexpected:} the
+tiled kernels never beat \texttt{gemm()}; at 2048 the ratios are 2.22$\times$, 1.35$\times$ and 1.10$\times$ for
+$8\times8$, $16\times16$ and $32\times32$.
+\todo{what the profiling reveals (occupancy / shared memory / memory throughput), after the Nsight Compute rerun}
+
+%==============================================================================================
 \section{Question 3: Accelerating Llama2 Inference}
-\todo{not done yet}
+
+\textbf{Approach.} \texttt{q3\_llama2/run.c} is Karpathy's \texttt{run.c} with three small changes: a counter in
+\texttt{matmul}, a call to \texttt{matmul\_gpu()} (in \texttt{matmul\_gpu.cu}) when compiled with \texttt{-DUSE\_CUDA},
+and init/cleanup hooks. Three GPU variants are built by the Makefile: \texttt{naive} (every call allocates device
+memory, copies W and x, runs a one-thread-per-row kernel, copies the result back and frees); \texttt{resident}
+(optimization: the whole checkpoint is copied to the GPU once at start-up, and each call only copies the vector x
+and the result); and \texttt{warp} (resident plus a kernel with one warp per row and a shuffle reduction).
+All runs use \texttt{-t 0 -s 1 -n 256 -i "Once upon a time"} (greedy, deterministic).
+
+\subsection{CPU backend: achieved tok/s and number of matmul calls}
+\lstinputlisting{logs/q3_toks.txt}
+The CPU version (\texttt{gcc -O3}) reaches about 157--160 tok/s (lines \texttt{cpu run 1--3}). \texttt{matmul} is
+called \textbf{9546} times in one run: 43 times per generated token (6 layers $\times$ 7 matmuls plus the final
+classifier) for 222 tokens (the story ends before 256 steps).
+
+\subsection{GPU port, correctness, and the Makefile}
+Modified files: \texttt{q3\_llama2/run.c}, \texttt{matmul\_gpu.cu}, \texttt{Makefile}. Correctness was checked in two ways:
+the generated text of every GPU variant is identical to the CPU text (\texttt{diff}), and with
+\texttt{VERIFY\_MATMUL=1} every one of the 9546 GPU \texttt{matmul} results is compared with a double-precision CPU
+reference:
+\lstinputlisting{logs/q3_correct.txt}
+The maximum absolute error is $3.5\cdot10^{-5}$ (naive and resident) and $8\cdot10^{-6}$ (warp); the large relative
+error appears only for outputs close to zero.
+
+\subsection{Achieved tok/s of the naive GPU version}
+The \texttt{naive run 1--3} lines above give \textbf{51.5, 64.1 and 64.4 tok/s}, i.e.\ the naive GPU port is
+2.6$\times$ \emph{slower} than the CPU (mean 60 vs 159 tok/s).
+
+\subsection{Nsight Systems: bottlenecks of the naive version}
+64 generated tokens (2752 \texttt{matmul} calls):
+\lstinputlisting[style=termtiny]{logs/q3_nsys_naive.txt}
+The bottleneck is data movement and allocation, not computation: \texttt{cudaMemcpy} (44\,\%), \texttt{cudaMalloc}
+(32\,\%) and \texttt{cudaFree} (24\,\%) take essentially all of the API time (8256 calls each), and copying the
+weight matrix to the GPU on every call costs 182\,ms in host-to-device copies against only 153\,ms of kernel time.
+
+\subsection{Optimization and achieved tok/s}
+Optimization: the weights never change, so the whole checkpoint is copied to the GPU once; \texttt{matmul\_gpu()}
+maps the weight pointer to its device copy, and the input/output vectors use persistent device buffers. This
+removes the per-call \texttt{cudaMalloc}/\texttt{cudaFree} and the weight copy. Result (lines \texttt{resident run 1--3}
+above): \textbf{307, 307 and 304 tok/s}, about 5$\times$ the naive version and 1.9$\times$ the CPU. As a second step, replacing the
+one-thread-per-row kernel (neighbouring threads read addresses $n$ floats apart) by a warp-per-row kernel with
+coalesced loads gives \textbf{822, 819 and 813 tok/s} (\texttt{warp run 1--3}), 5.1$\times$ the CPU.
+
+\subsection{Profile of the optimized versions compared with the naive version}
+Same 64-token run (2752 calls):
+\begin{center}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+ & naive & resident & warp \\
+\midrule
+tok/s (3 runs, mean)          & 60.0 & 306.1 & 817.5 \\
+\texttt{cudaMalloc} calls     & 8256 & 6 & 6 \\
+\texttt{cudaFree} calls       & 8256 & 6 & 6 \\
+host-to-device copy time (ms) & 182.0 & 12.8 & 13.0 \\
+total kernel time (ms)        & 152.6 & 155.0 & 14.6 \\
+mean kernel time ($\mu$s)     & 55.4 & 56.3 & 5.3 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\lstinputlisting[style=termtiny]{logs/q3_nsys_resident.txt}
+\lstinputlisting[style=termtiny]{logs/q3_nsys_warp.txt}
+Making the weights resident removes the allocation and the weight copies (the copy time drops 14$\times$) but the
+kernel is unchanged; the warp-per-row kernel then cuts the kernel time by 10.6$\times$. What remains is one small
+synchronous \texttt{cudaMemcpy} pair and one kernel launch per \texttt{matmul}.
+
+%==============================================================================================
+\section{Bonus: Particle Simulation (iPIC3D-mini)}
+
+\subsection{Environment, Makefile changes, how the simulation was run}
+Environment as above (H100, CUDA 12.5, g++ 12.3). Makefile changes: \texttt{ARCH} from \texttt{sm\_30} (no longer
+supported) to \texttt{ARCH ?= sm\_90}, and \texttt{--fmad=false} added to \texttt{NVCCFLAGS} so that the GPU mover
+rounds like the CPU mover. Build and run (from \texttt{bonus\_ipic3d/}, input \texttt{GEM\_2D.inp}, 10 cycles,
+$256\times128$ cells, 4 species with 4\,096\,000 particles each):
+\begin{lstlisting}
+make ARCH=sm_90
+MOVER=cpu ./bin/miniPIC.out inputfiles/GEM_2D.inp     # original CPU mover_PC()
+MOVER=gpu ./bin/miniPIC.out inputfiles/GEM_2D.inp     # new mover_PC_gpu()
+\end{lstlisting}
+\texttt{run\_bonus.sh} does both runs in separate directories and compares them.
+
+\subsection{Design of mover\_PC\_gpu()}
+One thread advances one particle through all sub-cycles (particles do not interact in the mover and the fields are
+constant during a call). All particle arrays, the six field arrays and the node coordinates are copied to the GPU
+inside \texttt{mover\_PC\_gpu()}, one kernel (256 threads per block) is launched, and the particles are copied back, so
+\texttt{interpP2G()} and the rest of the code stay on the CPU. The kernel uses the same expressions and types as the CPU code
+(the flattened \texttt{*\_flat} arrays are indexed row-major).
+
+\subsection{Correctness: CPU versus GPU output}
+\lstinputlisting[style=termtiny]{logs/bonus_correct.txt}
+Per-particle comparison of the final x, y, z, u, v, w of all four species (4\,096\,000 particles each):
+\textbf{0 of 24\,576\,000 values differ}; the five VTK files written at cycle 10 (E, B, rho) are byte-identical.
+
+\subsection{Execution time: GPU versus CPU}
+\lstinputlisting{logs/bonus_timing.txt}
+The mover takes 1.707 s per cycle on the CPU and 0.101 s on the GPU, a \textbf{16.8$\times$} speed-up for the mover and
+2.1$\times$ for the whole simulation (29.2 s $\to$ 13.8 s). The time per species shows where the rest goes: the kernel
+needs only 1--1.6 ms, while allocation plus host-to-device copies take 11--54 ms and the copy back about 7 ms. Because
+the particle data is copied every cycle and \texttt{interpP2G()} (part of the 1.0 s per cycle of the interpolation step) remains on the CPU, the whole step
+is limited by transfers and the CPU part. Nsight Systems (3 cycles) shows the same:
+\lstinputlisting[style=termtiny]{logs/bonus_nsys.txt}
 
 \end{document}

@@ -1,0 +1,16 @@
+CPU:
+CHECKSUM species 0 nop=4096000 sum(x)=8.192011e+07 sum(y)=4.095982e+07 sum(z)=2.048001e+06 sum(u)=-3.277598e+00 sum(v)=1.232570e+01 sum(w)=-2.442935e+04
+CHECKSUM species 1 nop=4096000 sum(x)=8.191816e+07 sum(y)=4.095997e+07 sum(z)=1.941565e+06 sum(u)=-1.014897e+00 sum(v)=-1.050121e+01 sum(w)=-1.329681e+05
+CHECKSUM species 2 nop=4096000 sum(x)=8.192694e+07 sum(y)=4.095998e+07 sum(z)=2.047821e+06 sum(u)=1.360416e+02 sum(v)=-1.908574e+01 sum(w)=1.822890e+02
+CHECKSUM species 3 nop=4096000 sum(x)=8.191789e+07 sum(y)=4.096007e+07 sum(z)=2.048056e+06 sum(u)=-2.944687e+01 sum(v)=2.984522e+01 sum(w)=1.915120e+01
+GPU:
+CHECKSUM species 0 nop=4096000 sum(x)=8.192011e+07 sum(y)=4.095982e+07 sum(z)=2.048001e+06 sum(u)=-3.277598e+00 sum(v)=1.232570e+01 sum(w)=-2.442935e+04
+CHECKSUM species 1 nop=4096000 sum(x)=8.191816e+07 sum(y)=4.095997e+07 sum(z)=1.941565e+06 sum(u)=-1.014897e+00 sum(v)=-1.050121e+01 sum(w)=-1.329681e+05
+CHECKSUM species 2 nop=4096000 sum(x)=8.192694e+07 sum(y)=4.095998e+07 sum(z)=2.047821e+06 sum(u)=1.360416e+02 sum(v)=-1.908574e+01 sum(w)=1.822890e+02
+CHECKSUM species 3 nop=4096000 sum(x)=8.191789e+07 sum(y)=4.096007e+07 sum(z)=2.048056e+06 sum(u)=-2.944687e+01 sum(v)=2.984522e+01 sum(w)=1.915120e+01
+RESULT: particle data is IDENTICAL
+B_10.vtk: identical
+E_10.vtk: identical
+rho_net_10.vtk: identical
+rhoe_10.vtk: identical
+rhoi_10.vtk: identical

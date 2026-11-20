@@ -11,20 +11,40 @@
 \fi}
 \global\let\hyper@last\relax 
 \gdef\HyperFirstAtBeginDocument#1{#1}
-\providecommand*\HyPL@Entry[1]{}
-\HyPL@Entry{0<</S/D>>}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Question 1: 1D Convolution}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Implementation}{1}{subsection.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Name 3 application domains where convolutions are used}{1}{subsection.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Global memory reads and writes}{1}{subsection.1.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Program output for $N=1024,2048,4096,8192,16384$.\relax }}{2}{figure.caption.1}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:q1-output}{{1}{2}{Program output for $N=1024,2048,4096,8192,16384$.\relax }{figure.caption.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces CPU-timer kernel times with $\texttt  {TILE\_WIDTH}=128$ and block size $256$ for the basic kernel.\relax }}{2}{table.caption.2}\protected@file@percent }
-\newlabel{tab:q1}{{1}{2}{CPU-timer kernel times with $\texttt {TILE\_WIDTH}=128$ and block size $256$ for the basic kernel.\relax }{table.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Results for $N=1024,\dots  ,16384$}{2}{subsection.1.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.5}Choosing the tile size}{2}{subsection.1.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}Profiling the tiled implementation}{3}{subsection.1.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Name 3 application domains where convolutions are used}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Global memory reads and writes}{1}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Runs for N = 1024 to 16384 and the choice of tile size}{1}{subsection.1.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/q1\textunderscore runs.txt}{1}{lstlisting.-1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4}Profiling the tiled implementation}{3}{subsection.1.4}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/q1\textunderscore nsys.txt}{3}{lstlisting.-2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {2}Question 2: Tiled Matrix Multiplication}{3}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Question 3: Accelerating Llama2 Inference}{3}{section.3}\protected@file@percent }
-\gdef \@abspage@last{3}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Global memory reads of tiled\_gemm() versus gemm()}{4}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}A, B = 1024$\times $1024 and 513$\times $8192 by 8192$\times $1023, three tile sizes}{4}{subsection.2.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/q2\textunderscore runs.txt}{4}{lstlisting.-3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Profiling: achieved occupancy and shared memory}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Eight to ten matrix sizes: runtime comparison}{4}{subsection.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Runtime of the CPU reference, \texttt  {gemm()} and \texttt  {tiled\_gemm()} (three tile sizes).\relax }}{5}{figure.caption.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Question 3: Accelerating Llama2 Inference}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}CPU backend: achieved tok/s and number of matmul calls}{5}{subsection.3.1}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/q3\textunderscore toks.txt}{5}{lstlisting.-4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}GPU port, correctness, and the Makefile}{5}{subsection.3.2}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/q3\textunderscore correct.txt}{6}{lstlisting.-5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Achieved tok/s of the naive GPU version}{6}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Nsight Systems: bottlenecks of the naive version}{6}{subsection.3.4}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/q3\textunderscore nsys\textunderscore naive.txt}{6}{lstlisting.-6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Optimization and achieved tok/s}{6}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Profile of the optimized versions compared with the naive version}{7}{subsection.3.6}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/q3\textunderscore nsys\textunderscore resident.txt}{7}{lstlisting.-7}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/q3\textunderscore nsys\textunderscore warp.txt}{7}{lstlisting.-8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Bonus: Particle Simulation (iPIC3D-mini)}{8}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Environment, Makefile changes, how the simulation was run}{8}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Design of mover\_PC\_gpu()}{8}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Correctness: CPU versus GPU output}{8}{subsection.4.3}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/bonus\textunderscore correct.txt}{8}{lstlisting.-10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Execution time: GPU versus CPU}{8}{subsection.4.4}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/bonus\textunderscore timing.txt}{8}{lstlisting.-11}\protected@file@percent }
+\@writefile{lol}{\contentsline {lstlisting}{logs/bonus\textunderscore nsys.txt}{9}{lstlisting.-12}\protected@file@percent }
+\gdef \@abspage@last{9}

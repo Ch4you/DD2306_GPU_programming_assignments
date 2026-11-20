@@ -1,0 +1,85 @@
+=== N=1024 ===
+Timing - Allocated host memory.                 Elasped 4 microseconds
+Timing - Allocated device memory.               Elasped 314483 microseconds
+Timing - Initialized data on the host.          Elasped 16 microseconds
+Timing - Copying data to the GPU..              Elasped 34 microseconds
+Timing - Finished 1D convolution(basic).                Elasped 95 microseconds
+N[0] = 0.840188, P[0] = 1.233154
+N[1] = 0.394383, P[1] = 1.405636
+N[2] = 0.783099, P[2] = 1.397376
+N[3] = 0.798440, P[3] = 1.596605
+N[4] = 0.911647, P[4] = 1.297674
+Timing - Copying output P to the CPU and print out the results.                 Elasped 15 microseconds
+Timing - Finished 1D convolution(tiled).                Elasped 16 microseconds
+Timing - Copying output P to the CPU and print out the results.                 Elasped 8 microseconds
+PASS: basic and tiled results match.
+BENCH,1024,128,-1,100,1.928,2.243
+Timing - Free memory resources.                 Elasped 112 microseconds
+=== N=2048 ===
+Timing - Allocated host memory.                 Elasped 4 microseconds
+Timing - Allocated device memory.               Elasped 229202 microseconds
+Timing - Initialized data on the host.          Elasped 32 microseconds
+Timing - Copying data to the GPU..              Elasped 31 microseconds
+Timing - Finished 1D convolution(basic).                Elasped 97 microseconds
+N[0] = 0.840188, P[0] = 1.233154
+N[1] = 0.394383, P[1] = 1.405636
+N[2] = 0.783099, P[2] = 1.397376
+N[3] = 0.798440, P[3] = 1.596605
+N[4] = 0.911647, P[4] = 1.297674
+Timing - Copying output P to the CPU and print out the results.                 Elasped 16 microseconds
+Timing - Finished 1D convolution(tiled).                Elasped 16 microseconds
+Timing - Copying output P to the CPU and print out the results.                 Elasped 9 microseconds
+PASS: basic and tiled results match.
+BENCH,2048,128,-1,100,1.977,2.294
+Timing - Free memory resources.                 Elasped 109 microseconds
+=== N=4096 ===
+Timing - Allocated host memory.                 Elasped 4 microseconds
+Timing - Allocated device memory.               Elasped 220474 microseconds
+Timing - Initialized data on the host.          Elasped 68 microseconds
+Timing - Copying data to the GPU..              Elasped 31 microseconds
+Timing - Finished 1D convolution(basic).                Elasped 93 microseconds
+N[0] = 0.840188, P[0] = 1.233154
+N[1] = 0.394383, P[1] = 1.405636
+N[2] = 0.783099, P[2] = 1.397376
+N[3] = 0.798440, P[3] = 1.596605
+N[4] = 0.911647, P[4] = 1.297674
+Timing - Copying output P to the CPU and print out the results.                 Elasped 17 microseconds
+Timing - Finished 1D convolution(tiled).                Elasped 17 microseconds
+Timing - Copying output P to the CPU and print out the results.                 Elasped 13 microseconds
+PASS: basic and tiled results match.
+BENCH,4096,128,-1,100,2.016,2.257
+Timing - Free memory resources.                 Elasped 108 microseconds
+=== N=8192 ===
+Timing - Allocated host memory.                 Elasped 4 microseconds
+Timing - Allocated device memory.               Elasped 212342 microseconds
+Timing - Initialized data on the host.          Elasped 143 microseconds
+Timing - Copying data to the GPU..              Elasped 38 microseconds
+Timing - Finished 1D convolution(basic).                Elasped 92 microseconds
+N[0] = 0.840188, P[0] = 1.233154
+N[1] = 0.394383, P[1] = 1.405636
+N[2] = 0.783099, P[2] = 1.397376
+N[3] = 0.798440, P[3] = 1.596605
+N[4] = 0.911647, P[4] = 1.297674
+Timing - Copying output P to the CPU and print out the results.                 Elasped 19 microseconds
+Timing - Finished 1D convolution(tiled).                Elasped 17 microseconds
+Timing - Copying output P to the CPU and print out the results.                 Elasped 22 microseconds
+PASS: basic and tiled results match.
+BENCH,8192,128,-1,100,2.056,2.362
+Timing - Free memory resources.                 Elasped 109 microseconds
+=== N=16384 ===
+Timing - Allocated host memory.                 Elasped 5 microseconds
+Timing - Allocated device memory.               Elasped 212741 microseconds
+Timing - Initialized data on the host.          Elasped 281 microseconds
+Timing - Copying data to the GPU..              Elasped 53 microseconds
+Timing - Finished 1D convolution(basic).                Elasped 87 microseconds
+N[0] = 0.840188, P[0] = 1.233154
+N[1] = 0.394383, P[1] = 1.405636
+N[2] = 0.783099, P[2] = 1.397376
+N[3] = 0.798440, P[3] = 1.596605
+N[4] = 0.911647, P[4] = 1.297674
+Timing - Copying output P to the CPU and print out the results.                 Elasped 25 microseconds
+Timing - Finished 1D convolution(tiled).                Elasped 17 microseconds
+Timing - Copying output P to the CPU and print out the results.                 Elasped 39 microseconds
+PASS: basic and tiled results match.
+BENCH,16384,128,-1,100,2.147,2.540
+Timing - Free memory resources.                 Elasped 111 microseconds

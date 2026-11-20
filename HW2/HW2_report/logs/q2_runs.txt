@@ -1,0 +1,15 @@
+=== A 1024x1024, B 1024x1024 ===
+Matrix multiplication: A(1024 x 1024) * B(1024 x 1024) = C(1024 x 1024)
+CPU reference:                    150.431 ms
+gemm()           block 16x16:      3.225 ms  PASS
+tiled_gemm()     tile  8x8 :      7.266 ms  PASS
+tiled_gemm()     tile 16x16:      4.392 ms  PASS
+tiled_gemm()     tile 32x32:      3.450 ms  PASS
+
+=== A 513x8192, B 8192x1023 ===
+Matrix multiplication: A(513 x 8192) * B(8192 x 1023) = C(513 x 1023)
+CPU reference:                    596.357 ms
+gemm()           block 16x16:     13.410 ms  PASS
+tiled_gemm()     tile  8x8 :     29.832 ms  PASS
+tiled_gemm()     tile 16x16:     18.547 ms  PASS
+tiled_gemm()     tile 32x32:     15.454 ms  PASS
