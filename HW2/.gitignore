@@ -12,3 +12,11 @@ HW2_report/*.fdb_latexmk
 HW2_report/*.bbl
 HW2_report/*.blg
 HW2_report/*.synctex.gz
+
+# Q3 build products and the downloaded model
+q3_llama2/run_cpu
+q3_llama2/run_naive
+q3_llama2/run_resident
+q3_llama2/run_warp
+q3_llama2/*.o
+q3_llama2/stories15M.bin
