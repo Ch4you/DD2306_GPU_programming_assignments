@@ -1,0 +1,69 @@
+Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she saw a big, red ball in the sky. It was the sun! She thought it was so pretty.
+Lily wanted to play with the ball, but it wasachieved tok/s: 797.468354
+matmul calls: 2752
+
+Generating '/tmp/nsys-report-d332.qdstrm'
+[1/7] [0%                          ] nsys_warp.nsys-rep[1/7] [0%                          ] nsys_warp.nsys-rep[1/7] [5%                          ] nsys_warp.nsys-rep[1/7] [11%                         ] nsys_warp.nsys-rep[1/7] [=15%                        ] nsys_warp.nsys-rep[1/7] [==================77%       ] nsys_warp.nsys-rep[1/7] [==================78%       ] nsys_warp.nsys-rep[1/7] [========================100%] nsys_warp.nsys-rep[1/7] [========================100%] nsys_warp.nsys-rep
+[2/7] [0%                          ] nsys_warp.sqlite[2/7] [1%                          ] nsys_warp.sqlite[2/7] [2%                          ] nsys_warp.sqlite[2/7] [3%                          ] nsys_warp.sqlite[2/7] [4%                          ] nsys_warp.sqlite[2/7] [5%                          ] nsys_warp.sqlite[2/7] [6%                          ] nsys_warp.sqlite[2/7] [7%                          ] nsys_warp.sqlite[2/7] [8%                          ] nsys_warp.sqlite[2/7] [9%                          ] nsys_warp.sqlite[2/7] [10%                         ] nsys_warp.sqlite[2/7] [11%                         ] nsys_warp.sqlite[2/7] [12%                         ] nsys_warp.sqlite[2/7] [13%                         ] nsys_warp.sqlite[2/7] [14%                         ] nsys_warp.sqlite[2/7] [=15%                        ] nsys_warp.sqlite[2/7] [=16%                        ] nsys_warp.sqlite[2/7] [=17%                        ] nsys_warp.sqlite[2/7] [==18%                       ] nsys_warp.sqlite[2/7] [==19%                       ] nsys_warp.sqlite[2/7] [==20%                       ] nsys_warp.sqlite[2/7] [==21%                       ] nsys_warp.sqlite[2/7] [===22%                      ] nsys_warp.sqlite[2/7] [===23%                      ] nsys_warp.sqlite[2/7] [===24%                      ] nsys_warp.sqlite[2/7] [====25%                     ] nsys_warp.sqlite[2/7] [====26%                     ] nsys_warp.sqlite[2/7] [====27%                     ] nsys_warp.sqlite[2/7] [====28%                     ] nsys_warp.sqlite[2/7] [=====29%                    ] nsys_warp.sqlite[2/7] [=====30%                    ] nsys_warp.sqlite[2/7] [=====31%                    ] nsys_warp.sqlite[2/7] [=====32%                    ] nsys_warp.sqlite[2/7] [======33%                   ] nsys_warp.sqlite[2/7] [======34%                   ] nsys_warp.sqlite[2/7] [======35%                   ] nsys_warp.sqlite[2/7] [=======36%                  ] nsys_warp.sqlite[2/7] [=======37%                  ] nsys_warp.sqlite[2/7] [=======38%                  ] nsys_warp.sqlite[2/7] [=======39%                  ] nsys_warp.sqlite[2/7] [========40%                 ] nsys_warp.sqlite[2/7] [========41%                 ] nsys_warp.sqlite[2/7] [========42%                 ] nsys_warp.sqlite[2/7] [=========43%                ] nsys_warp.sqlite[2/7] [=========44%                ] nsys_warp.sqlite[2/7] [=========45%                ] nsys_warp.sqlite[2/7] [=========46%                ] nsys_warp.sqlite[2/7] [==========47%               ] nsys_warp.sqlite[2/7] [==========48%               ] nsys_warp.sqlite[2/7] [==========49%               ] nsys_warp.sqlite[2/7] [===========50%              ] nsys_warp.sqlite[2/7] [===========51%              ] nsys_warp.sqlite[2/7] [===========52%              ] nsys_warp.sqlite[2/7] [===========53%              ] nsys_warp.sqlite[2/7] [============54%             ] nsys_warp.sqlite[2/7] [============55%             ] nsys_warp.sqlite[2/7] [============56%             ] nsys_warp.sqlite[2/7] [============57%             ] nsys_warp.sqlite[2/7] [=============58%            ] nsys_warp.sqlite[2/7] [=============59%            ] nsys_warp.sqlite[2/7] [=============60%            ] nsys_warp.sqlite[2/7] [==============61%           ] nsys_warp.sqlite[2/7] [==============62%           ] nsys_warp.sqlite[2/7] [==============63%           ] nsys_warp.sqlite[2/7] [==============64%           ] nsys_warp.sqlite[2/7] [===============65%          ] nsys_warp.sqlite[2/7] [===============66%          ] nsys_warp.sqlite[2/7] [===============67%          ] nsys_warp.sqlite[2/7] [================68%         ] nsys_warp.sqlite[2/7] [================69%         ] nsys_warp.sqlite[2/7] [================70%         ] nsys_warp.sqlite[2/7] [================71%         ] nsys_warp.sqlite[2/7] [=================72%        ] nsys_warp.sqlite[2/7] [=================73%        ] nsys_warp.sqlite[2/7] [=================74%        ] nsys_warp.sqlite[2/7] [==================75%       ] nsys_warp.sqlite[2/7] [==================76%       ] nsys_warp.sqlite[2/7] [==================77%       ] nsys_warp.sqlite[2/7] [==================78%       ] nsys_warp.sqlite[2/7] [===================79%      ] nsys_warp.sqlite[2/7] [===================80%      ] nsys_warp.sqlite[2/7] [===================81%      ] nsys_warp.sqlite[2/7] [===================82%      ] nsys_warp.sqlite[2/7] [====================83%     ] nsys_warp.sqlite[2/7] [====================84%     ] nsys_warp.sqlite[2/7] [====================85%     ] nsys_warp.sqlite[2/7] [=====================86%    ] nsys_warp.sqlite[2/7] [=====================87%    ] nsys_warp.sqlite[2/7] [=====================88%    ] nsys_warp.sqlite[2/7] [=====================89%    ] nsys_warp.sqlite[2/7] [======================90%   ] nsys_warp.sqlite[2/7] [======================91%   ] nsys_warp.sqlite[2/7] [======================92%   ] nsys_warp.sqlite[2/7] [=======================93%  ] nsys_warp.sqlite[2/7] [=======================94%  ] nsys_warp.sqlite[2/7] [=======================95%  ] nsys_warp.sqlite[2/7] [=======================96%  ] nsys_warp.sqlite[2/7] [========================97% ] nsys_warp.sqlite[2/7] [========================98% ] nsys_warp.sqlite[2/7] [========================99% ] nsys_warp.sqlite[2/7] [========================100%] nsys_warp.sqlite[2/7] [========================100%] nsys_warp.sqlite
+[3/7] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)    Med (ns)   Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ----------  ----------  --------  ---------  -----------  ----------------------
+     57.4        877941896         15  58529459.7  15942948.0      1203  376718357   96074104.6  poll                  
+     40.9        625568452        874    715753.4      5316.0      1065  113386490    4970859.9  ioctl                 
+      1.2         17873094        150    119154.0      1399.0      1001   17530266    1431155.4  fopen                 
+      0.1          2098631          6    349771.8      6216.5      4882    2067813     841665.7  munmap                
+      0.1          2092487          8    261560.9    254208.0    143862     357225      86517.0  sem_timedwait         
+      0.1          1077997         22     48999.9     12781.0      3990     594208     123881.1  mmap64                
+      0.0           430684          2    215342.0    215342.0    211155     219529       5921.3  pthread_create        
+      0.0           366488          1    366488.0    366488.0    366488     366488          0.0  pthread_cond_wait     
+      0.0           309014         51      6059.1      3683.0      1185      23697       4958.6  open64                
+      0.0           165100         15     11006.7      9274.0      2108      51228      12635.2  mmap                  
+      0.0           150464         10     15046.4     14016.5     13421      19878       2132.9  fgets                 
+      0.0           118891         91      1306.5      1112.0      1001       7315        817.8  fread                 
+      0.0            29744         10      2974.4      1920.0      1135      10524       2856.3  fclose                
+      0.0            23183         12      1931.9      1883.0      1650       2449        267.3  read                  
+      0.0            22895          7      3270.7      3792.0      1119       5153       1540.0  open                  
+      0.0            21775          9      2419.4      2461.0      1648       3898        694.9  write                 
+      0.0            17674         11      1606.7      1083.0      1010       5360       1319.5  fflush                
+      0.0            11941          3      3980.3      4703.0      1939       5299       1792.8  pipe2                 
+      0.0             8881          2      4440.5      4440.5      4058       4823        540.9  socket                
+      0.0             6244          1      6244.0      6244.0      6244       6244          0.0  connect               
+      0.0             5911          2      2955.5      2955.5      1954       3957       1416.3  pthread_cond_broadcast
+      0.0             5454          2      2727.0      2727.0      2666       2788         86.3  fwrite                
+      0.0             1713          1      1713.0      1713.0      1713       1713          0.0  bind                  
+      0.0             1005          1      1005.0      1005.0      1005       1005          0.0  listen                
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ----------  --------  --------  ---------  -----------  ----------------------
+     83.3        464843900          6  77473983.3    4048.0      1597  401786227  160868708.2  cudaMalloc            
+     13.4         74869744       5505     13600.3   10177.0      2317    9702406     131380.2  cudaMemcpy            
+      2.1         11950616          6   1991769.3    9214.5      2970   10478009    4197182.5  cudaFree              
+      1.2          6576868       2752      2389.9    2218.0      2035     137616       2761.2  cudaLaunchKernel      
+      0.0             1743          1      1743.0    1743.0      1743       1743          0.0  cuModuleGetLoadingMode
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)                              Name                            
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  ------------------------------------------------------------
+    100.0         14640472       2752    5319.9    2656.0      2400     96608      14011.9  matmul_warp(float *, const float *, const float *, int, int)
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
+ --------  ---------------  -----  --------  --------  --------  --------  -----------  ----------------------------
+     83.0         12993533   2753    4719.8    1504.0       767   9524065     181494.3  [CUDA memcpy Host-to-Device]
+     17.0          2654885   2752     964.7     865.0       863      5600        492.5  [CUDA memcpy Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
+ ----------  -----  --------  --------  --------  --------  -----------  ----------------------------
+     64.724   2753     0.024     0.001     0.001    60.816        1.159  [CUDA memcpy Host-to-Device]
+     12.763   2752     0.005     0.001     0.001     0.128        0.019  [CUDA memcpy Device-to-Host]
+
+Generated:
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/q3_llama2/results_q3/nsys_warp.nsys-rep
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/q3_llama2/results_q3/nsys_warp.sqlite

@@ -1,0 +1,12 @@
+naive: generated text IDENTICAL to CPU
+resident: generated text IDENTICAL to CPU
+warp: generated text IDENTICAL to CPU
+--- naive, VERIFY_MATMUL=1 ---
+matmul calls: 9546
+VERIFY: 9546 matmul calls checked, max abs err 3.450e-05, max rel err 1.559e-01
+--- resident, VERIFY_MATMUL=1 ---
+matmul calls: 9546
+VERIFY: 9546 matmul calls checked, max abs err 3.450e-05, max rel err 1.559e-01
+--- warp, VERIFY_MATMUL=1 ---
+matmul calls: 9546
+VERIFY: 9546 matmul calls checked, max abs err 7.991e-06, max rel err 5.696e-02

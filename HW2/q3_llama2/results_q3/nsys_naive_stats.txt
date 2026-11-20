@@ -1,0 +1,69 @@
+Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she saw a big, red ball in the sky. It was the sun! She thought it was so pretty.
+Lily wanted to play with the ball, but it wasachieved tok/s: 63.700708
+matmul calls: 2752
+
+Generating '/tmp/nsys-report-ad19.qdstrm'
+[1/7] [0%                          ] nsys_naive.nsys-rep[1/7] [0%                          ] nsys_naive.nsys-rep[1/7] [0%                          ] nsys_naive.nsys-rep[1/7] [=====31%                    ] nsys_naive.nsys-rep[1/7] [============55%             ] nsys_naive.nsys-rep[1/7] [===================79%      ] nsys_naive.nsys-rep[1/7] [======================91%   ] nsys_naive.nsys-rep[1/7] [========================100%] nsys_naive.nsys-rep[1/7] [========================100%] nsys_naive.nsys-rep
+[2/7] [0%                          ] nsys_naive.sqlite[2/7] [1%                          ] nsys_naive.sqlite[2/7] [2%                          ] nsys_naive.sqlite[2/7] [3%                          ] nsys_naive.sqlite[2/7] [4%                          ] nsys_naive.sqlite[2/7] [5%                          ] nsys_naive.sqlite[2/7] [6%                          ] nsys_naive.sqlite[2/7] [7%                          ] nsys_naive.sqlite[2/7] [8%                          ] nsys_naive.sqlite[2/7] [9%                          ] nsys_naive.sqlite[2/7] [10%                         ] nsys_naive.sqlite[2/7] [11%                         ] nsys_naive.sqlite[2/7] [12%                         ] nsys_naive.sqlite[2/7] [13%                         ] nsys_naive.sqlite[2/7] [14%                         ] nsys_naive.sqlite[2/7] [=15%                        ] nsys_naive.sqlite[2/7] [=16%                        ] nsys_naive.sqlite[2/7] [=17%                        ] nsys_naive.sqlite[2/7] [==18%                       ] nsys_naive.sqlite[2/7] [==19%                       ] nsys_naive.sqlite[2/7] [==20%                       ] nsys_naive.sqlite[2/7] [==21%                       ] nsys_naive.sqlite[2/7] [===22%                      ] nsys_naive.sqlite[2/7] [===23%                      ] nsys_naive.sqlite[2/7] [===24%                      ] nsys_naive.sqlite[2/7] [====25%                     ] nsys_naive.sqlite[2/7] [====26%                     ] nsys_naive.sqlite[2/7] [====27%                     ] nsys_naive.sqlite[2/7] [====28%                     ] nsys_naive.sqlite[2/7] [=====29%                    ] nsys_naive.sqlite[2/7] [=====30%                    ] nsys_naive.sqlite[2/7] [=====31%                    ] nsys_naive.sqlite[2/7] [=====32%                    ] nsys_naive.sqlite[2/7] [======33%                   ] nsys_naive.sqlite[2/7] [======34%                   ] nsys_naive.sqlite[2/7] [======35%                   ] nsys_naive.sqlite[2/7] [=======36%                  ] nsys_naive.sqlite[2/7] [=======37%                  ] nsys_naive.sqlite[2/7] [=======38%                  ] nsys_naive.sqlite[2/7] [=======39%                  ] nsys_naive.sqlite[2/7] [========40%                 ] nsys_naive.sqlite[2/7] [========41%                 ] nsys_naive.sqlite[2/7] [========42%                 ] nsys_naive.sqlite[2/7] [=========43%                ] nsys_naive.sqlite[2/7] [=========44%                ] nsys_naive.sqlite[2/7] [=========45%                ] nsys_naive.sqlite[2/7] [=========46%                ] nsys_naive.sqlite[2/7] [==========47%               ] nsys_naive.sqlite[2/7] [==========48%               ] nsys_naive.sqlite[2/7] [==========49%               ] nsys_naive.sqlite[2/7] [===========50%              ] nsys_naive.sqlite[2/7] [===========51%              ] nsys_naive.sqlite[2/7] [===========52%              ] nsys_naive.sqlite[2/7] [===========53%              ] nsys_naive.sqlite[2/7] [============54%             ] nsys_naive.sqlite[2/7] [============55%             ] nsys_naive.sqlite[2/7] [============56%             ] nsys_naive.sqlite[2/7] [============57%             ] nsys_naive.sqlite[2/7] [=============58%            ] nsys_naive.sqlite[2/7] [=============59%            ] nsys_naive.sqlite[2/7] [=============60%            ] nsys_naive.sqlite[2/7] [==============61%           ] nsys_naive.sqlite[2/7] [==============62%           ] nsys_naive.sqlite[2/7] [==============63%           ] nsys_naive.sqlite[2/7] [==============64%           ] nsys_naive.sqlite[2/7] [===============65%          ] nsys_naive.sqlite[2/7] [===============66%          ] nsys_naive.sqlite[2/7] [===============67%          ] nsys_naive.sqlite[2/7] [================68%         ] nsys_naive.sqlite[2/7] [================69%         ] nsys_naive.sqlite[2/7] [================70%         ] nsys_naive.sqlite[2/7] [================71%         ] nsys_naive.sqlite[2/7] [=================72%        ] nsys_naive.sqlite[2/7] [=================73%        ] nsys_naive.sqlite[2/7] [=================74%        ] nsys_naive.sqlite[2/7] [==================75%       ] nsys_naive.sqlite[2/7] [==================76%       ] nsys_naive.sqlite[2/7] [==================77%       ] nsys_naive.sqlite[2/7] [==================78%       ] nsys_naive.sqlite[2/7] [===================79%      ] nsys_naive.sqlite[2/7] [===================80%      ] nsys_naive.sqlite[2/7] [===================81%      ] nsys_naive.sqlite[2/7] [===================82%      ] nsys_naive.sqlite[2/7] [====================83%     ] nsys_naive.sqlite[2/7] [====================84%     ] nsys_naive.sqlite[2/7] [====================85%     ] nsys_naive.sqlite[2/7] [=====================86%    ] nsys_naive.sqlite[2/7] [=====================87%    ] nsys_naive.sqlite[2/7] [=====================88%    ] nsys_naive.sqlite[2/7] [=====================89%    ] nsys_naive.sqlite[2/7] [======================90%   ] nsys_naive.sqlite[2/7] [======================91%   ] nsys_naive.sqlite[2/7] [======================92%   ] nsys_naive.sqlite[2/7] [=======================93%  ] nsys_naive.sqlite[2/7] [=======================94%  ] nsys_naive.sqlite[2/7] [=======================95%  ] nsys_naive.sqlite[2/7] [=======================96%  ] nsys_naive.sqlite[2/7] [========================97% ] nsys_naive.sqlite[2/7] [========================98% ] nsys_naive.sqlite[2/7] [========================99% ] nsys_naive.sqlite[2/7] [========================100%] nsys_naive.sqlite[2/7] [========================100%] nsys_naive.sqlite
+[3/7] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)    Med (ns)    Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ----------  -----------  --------  ---------  -----------  ----------------------
+     68.7       1351371312         21  64351014.9  100140058.0      1250  248946034   63066581.6  poll                  
+     30.1        592755958      20567     28820.7      18798.0      1018   22335329     216517.5  ioctl                 
+      0.8         16430359        142    115706.8       1298.0      1000   16155800    1355603.7  fopen                 
+      0.1          2494853        132     18900.4       3736.5      2141    1943128     168784.7  munmap                
+      0.1          1375629         22     62528.6      11323.0      3088     855830     179286.9  mmap64                
+      0.1          1266817          8    158352.1     153511.5    145019     205168      19457.5  sem_timedwait         
+      0.0           915828         78     11741.4      12228.5      1934      48744       5441.9  mmap                  
+      0.0           440908          2    220454.0     220454.0    205962     234946      20494.8  pthread_create        
+      0.0           349383          1    349383.0     349383.0    349383     349383          0.0  pthread_cond_wait     
+      0.0           217975         51      4274.0       2695.0      1262      12218       3257.2  open64                
+      0.0           214299         64      3348.4       3027.0      2324       8295        910.6  fflush                
+      0.0           144315         10     14431.5      13809.5     13233      17970       1430.7  fgets                 
+      0.0           122444         92      1330.9       1130.0      1000       5934        747.5  fread                 
+      0.0            26851          7      3835.9       4273.0      1198       7266       2391.3  open                  
+      0.0            21991          6      3665.2       2198.5      1264      10769       3698.4  fclose                
+      0.0            20669         11      1879.0       1871.0      1653       2049        110.1  read                  
+      0.0            14023          6      2337.2       2421.5      1656       3027        545.0  write                 
+      0.0            12675          3      4225.0       4621.0      3399       4655        715.5  pipe2                 
+      0.0            10894          2      5447.0       5447.0      5437       5457         14.1  socket                
+      0.0             6094          1      6094.0       6094.0      6094       6094          0.0  connect               
+      0.0             5602          2      2801.0       2801.0      1522       4080       1808.8  pthread_cond_broadcast
+      0.0             5168          2      2584.0       2584.0      2443       2725        199.4  fwrite                
+      0.0             1902          1      1902.0       1902.0      1902       1902          0.0  bind                  
+      0.0             1387          1      1387.0       1387.0      1387       1387          0.0  listen                
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls  Avg (ns)  Med (ns)  Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  --------  --------  --------  ---------  -----------  ----------------------
+     43.9        491862330       8256   59576.3   27889.5      8692    5683789     204305.4  cudaMemcpy            
+     31.7        354688103       8256   42961.3    1336.0       955  121998124    1343222.8  cudaMalloc            
+     23.4        262569250       8256   31803.4    2200.0       975     746613      44233.4  cudaFree              
+      1.0         11105727       2752    4035.5    3745.0      2813     125480       2601.3  cudaLaunchKernel      
+      0.0             2377          1    2377.0    2377.0      2377       2377          0.0  cuModuleGetLoadingMode
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)                              Name                            
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  ------------------------------------------------------------
+    100.0        152590833       2752   55447.3   40192.5     39679    309886      45072.0  matmul_rows(float *, const float *, const float *, int, int)
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
+ --------  ---------------  -----  --------  --------  --------  --------  -----------  ----------------------------
+     98.6        182014979   5504   33069.6    5088.0       767   5513115     243802.7  [CUDA memcpy Host-to-Device]
+      1.4          2645948   2752     961.5     864.0       863      4735        510.2  [CUDA memcpy Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
+ ----------  -----  --------  --------  --------  --------  -----------  ----------------------------
+   3892.027   5504     0.707     0.167     0.001    36.864        3.937  [CUDA memcpy Host-to-Device]
+     12.763   2752     0.005     0.001     0.001     0.128        0.019  [CUDA memcpy Device-to-Host]
+
+Generated:
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/q3_llama2/results_q3/nsys_naive.nsys-rep
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/q3_llama2/results_q3/nsys_naive.sqlite

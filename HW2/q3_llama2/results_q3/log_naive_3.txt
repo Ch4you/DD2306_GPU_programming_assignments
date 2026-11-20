@@ -1,0 +1,2 @@
+achieved tok/s: 64.356436
+matmul calls: 9546

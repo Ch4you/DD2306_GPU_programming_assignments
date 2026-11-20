@@ -1,0 +1,69 @@
+Once upon a time, there was a little girl named Lily. She loved to play outside in the sunshine. One day, she saw a big, red ball in the sky. It was the sun! She thought it was so pretty.
+Lily wanted to play with the ball, but it wasachieved tok/s: 302.884615
+matmul calls: 2752
+
+Generating '/tmp/nsys-report-a05e.qdstrm'
+[1/7] [0%                          ] nsys_resident.nsys-rep[1/7] [0%                          ] nsys_resident.nsys-rep[1/7] [10%                         ] nsys_resident.nsys-rep[1/7] [12%                         ] nsys_resident.nsys-rep[1/7] [==================76%       ] nsys_resident.nsys-rep[1/7] [==================77%       ] nsys_resident.nsys-rep[1/7] [========================100%] nsys_resident.nsys-rep[1/7] [========================100%] nsys_resident.nsys-rep
+[2/7] [0%                          ] nsys_resident.sqlite[2/7] [1%                          ] nsys_resident.sqlite[2/7] [2%                          ] nsys_resident.sqlite[2/7] [3%                          ] nsys_resident.sqlite[2/7] [4%                          ] nsys_resident.sqlite[2/7] [5%                          ] nsys_resident.sqlite[2/7] [6%                          ] nsys_resident.sqlite[2/7] [7%                          ] nsys_resident.sqlite[2/7] [8%                          ] nsys_resident.sqlite[2/7] [9%                          ] nsys_resident.sqlite[2/7] [10%                         ] nsys_resident.sqlite[2/7] [11%                         ] nsys_resident.sqlite[2/7] [12%                         ] nsys_resident.sqlite[2/7] [13%                         ] nsys_resident.sqlite[2/7] [14%                         ] nsys_resident.sqlite[2/7] [=15%                        ] nsys_resident.sqlite[2/7] [=16%                        ] nsys_resident.sqlite[2/7] [=17%                        ] nsys_resident.sqlite[2/7] [==18%                       ] nsys_resident.sqlite[2/7] [==19%                       ] nsys_resident.sqlite[2/7] [==20%                       ] nsys_resident.sqlite[2/7] [==21%                       ] nsys_resident.sqlite[2/7] [===22%                      ] nsys_resident.sqlite[2/7] [===23%                      ] nsys_resident.sqlite[2/7] [===24%                      ] nsys_resident.sqlite[2/7] [====25%                     ] nsys_resident.sqlite[2/7] [====26%                     ] nsys_resident.sqlite[2/7] [====27%                     ] nsys_resident.sqlite[2/7] [====28%                     ] nsys_resident.sqlite[2/7] [=====29%                    ] nsys_resident.sqlite[2/7] [=====30%                    ] nsys_resident.sqlite[2/7] [=====31%                    ] nsys_resident.sqlite[2/7] [=====32%                    ] nsys_resident.sqlite[2/7] [======33%                   ] nsys_resident.sqlite[2/7] [======34%                   ] nsys_resident.sqlite[2/7] [======35%                   ] nsys_resident.sqlite[2/7] [=======36%                  ] nsys_resident.sqlite[2/7] [=======37%                  ] nsys_resident.sqlite[2/7] [=======38%                  ] nsys_resident.sqlite[2/7] [=======39%                  ] nsys_resident.sqlite[2/7] [========40%                 ] nsys_resident.sqlite[2/7] [========41%                 ] nsys_resident.sqlite[2/7] [========42%                 ] nsys_resident.sqlite[2/7] [=========43%                ] nsys_resident.sqlite[2/7] [=========44%                ] nsys_resident.sqlite[2/7] [=========45%                ] nsys_resident.sqlite[2/7] [=========46%                ] nsys_resident.sqlite[2/7] [==========47%               ] nsys_resident.sqlite[2/7] [==========48%               ] nsys_resident.sqlite[2/7] [==========49%               ] nsys_resident.sqlite[2/7] [===========50%              ] nsys_resident.sqlite[2/7] [===========51%              ] nsys_resident.sqlite[2/7] [===========52%              ] nsys_resident.sqlite[2/7] [===========53%              ] nsys_resident.sqlite[2/7] [============54%             ] nsys_resident.sqlite[2/7] [============55%             ] nsys_resident.sqlite[2/7] [============56%             ] nsys_resident.sqlite[2/7] [============57%             ] nsys_resident.sqlite[2/7] [=============58%            ] nsys_resident.sqlite[2/7] [=============59%            ] nsys_resident.sqlite[2/7] [=============60%            ] nsys_resident.sqlite[2/7] [==============61%           ] nsys_resident.sqlite[2/7] [==============62%           ] nsys_resident.sqlite[2/7] [==============63%           ] nsys_resident.sqlite[2/7] [==============64%           ] nsys_resident.sqlite[2/7] [===============65%          ] nsys_resident.sqlite[2/7] [===============66%          ] nsys_resident.sqlite[2/7] [===============67%          ] nsys_resident.sqlite[2/7] [================68%         ] nsys_resident.sqlite[2/7] [================69%         ] nsys_resident.sqlite[2/7] [================70%         ] nsys_resident.sqlite[2/7] [================71%         ] nsys_resident.sqlite[2/7] [=================72%        ] nsys_resident.sqlite[2/7] [=================73%        ] nsys_resident.sqlite[2/7] [=================74%        ] nsys_resident.sqlite[2/7] [==================75%       ] nsys_resident.sqlite[2/7] [==================76%       ] nsys_resident.sqlite[2/7] [==================77%       ] nsys_resident.sqlite[2/7] [==================78%       ] nsys_resident.sqlite[2/7] [===================79%      ] nsys_resident.sqlite[2/7] [===================80%      ] nsys_resident.sqlite[2/7] [===================81%      ] nsys_resident.sqlite[2/7] [===================82%      ] nsys_resident.sqlite[2/7] [====================83%     ] nsys_resident.sqlite[2/7] [====================84%     ] nsys_resident.sqlite[2/7] [====================85%     ] nsys_resident.sqlite[2/7] [=====================86%    ] nsys_resident.sqlite[2/7] [=====================87%    ] nsys_resident.sqlite[2/7] [=====================88%    ] nsys_resident.sqlite[2/7] [=====================89%    ] nsys_resident.sqlite[2/7] [======================90%   ] nsys_resident.sqlite[2/7] [======================91%   ] nsys_resident.sqlite[2/7] [======================92%   ] nsys_resident.sqlite[2/7] [=======================93%  ] nsys_resident.sqlite[2/7] [=======================94%  ] nsys_resident.sqlite[2/7] [=======================95%  ] nsys_resident.sqlite[2/7] [=======================96%  ] nsys_resident.sqlite[2/7] [========================97% ] nsys_resident.sqlite[2/7] [========================98% ] nsys_resident.sqlite[2/7] [========================99% ] nsys_resident.sqlite[2/7] [========================100%] nsys_resident.sqlite[2/7] [========================100%] nsys_resident.sqlite
+[3/7] Executing 'osrt_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)   Med (ns)   Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ----------  ---------  --------  ---------  -----------  ----------------------
+     77.6        548549707         13  42196131.3  4079482.0      1242  248424855   72305220.6  poll                  
+     18.8        133257838        871    152994.1     3228.0      1006   22893364     933268.8  ioctl                 
+      2.6         18345985        147    124802.6     1214.0      1004   18054931    1488984.0  fopen                 
+      0.3          2460364          8    307545.5   277952.5    214512     535045      99481.0  sem_timedwait         
+      0.2          1735497          6    289249.5     6328.5      2365    1707797     694946.0  munmap                
+      0.2          1272366         22     57834.8     8395.0      3210     775367     162720.6  mmap64                
+      0.1           449552          2    224776.0   224776.0    209470     240082      21646.0  pthread_create        
+      0.0           334287          1    334287.0   334287.0    334287     334287          0.0  pthread_cond_wait     
+      0.0           262604         51      5149.1     2135.0      1067      17831       4928.4  open64                
+      0.0           149251         10     14925.1    13695.0     13455      23358       3044.7  fgets                 
+      0.0           142266         15      9484.4     3975.0      1992      49218      12134.8  mmap                  
+      0.0           112562         81      1389.7     1135.0      1002       7365       1062.2  fread                 
+      0.0            57857         45      1285.7     1153.0      1025       5673        678.4  fflush                
+      0.0            26415          7      3773.6     4357.0      1156       7252       2341.4  open                  
+      0.0            24788          9      2754.2     2747.0      2196       3291        346.0  write                 
+      0.0            24012          6      4002.0     3007.5      1113      11430       3819.7  fclose                
+      0.0            19569         11      1779.0     1703.0      1434       2429        270.7  read                  
+      0.0            12476          3      4158.7     4088.0      3459       4929        737.5  pipe2                 
+      0.0             9992          2      4996.0     4996.0      4678       5314        449.7  socket                
+      0.0             7472          1      7472.0     7472.0      7472       7472          0.0  connect               
+      0.0             5521          2      2760.5     2760.5      1679       3842       1529.5  pthread_cond_broadcast
+      0.0             5212          2      2606.0     2606.0      2491       2721        162.6  fwrite                
+      0.0             3293          1      3293.0     3293.0      3293       3293          0.0  bind                  
+      0.0             1063          1      1063.0     1063.0      1063       1063          0.0  listen                
+
+[4/7] Executing 'cuda_api_sum' stats report
+
+ Time (%)  Total Time (ns)  Num Calls   Avg (ns)   Med (ns)  Min (ns)  Max (ns)   StdDev (ns)           Name         
+ --------  ---------------  ---------  ----------  --------  --------  ---------  -----------  ----------------------
+     62.4        207220060       5505     37642.2   49581.0      2282    9679905     138173.5  cudaMemcpy            
+     35.4        117622182          6  19603697.0    3161.0      1638  117472517   47945765.7  cudaMalloc            
+      2.0          6590181       2752      2394.7    2252.0      2022     108545       2063.6  cudaLaunchKernel      
+      0.1           394251          6     65708.5    4894.5      2885     219830      97581.2  cudaFree              
+      0.0             2217          1      2217.0    2217.0      2217       2217          0.0  cuModuleGetLoadingMode
+
+[5/7] Executing 'cuda_gpu_kern_sum' stats report
+
+ Time (%)  Total Time (ns)  Instances  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)                              Name                            
+ --------  ---------------  ---------  --------  --------  --------  --------  -----------  ------------------------------------------------------------
+    100.0        155037738       2752   56336.4   40959.0     40031    310622      45257.7  matmul_rows(float *, const float *, const float *, int, int)
+
+[6/7] Executing 'cuda_gpu_mem_time_sum' stats report
+
+ Time (%)  Total Time (ns)  Count  Avg (ns)  Med (ns)  Min (ns)  Max (ns)  StdDev (ns)           Operation          
+ --------  ---------------  -----  --------  --------  --------  --------  -----------  ----------------------------
+     82.8         12838156   2753    4663.3    1248.0       767   9501281     181061.0  [CUDA memcpy Host-to-Device]
+     17.2          2660014   2752     966.6     864.0       863      4545        509.6  [CUDA memcpy Device-to-Host]
+
+[7/7] Executing 'cuda_gpu_mem_size_sum' stats report
+
+ Total (MB)  Count  Avg (MB)  Med (MB)  Min (MB)  Max (MB)  StdDev (MB)           Operation          
+ ----------  -----  --------  --------  --------  --------  -----------  ----------------------------
+     64.724   2753     0.024     0.001     0.001    60.816        1.159  [CUDA memcpy Host-to-Device]
+     12.763   2752     0.005     0.001     0.001     0.128        0.019  [CUDA memcpy Device-to-Host]
+
+Generated:
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/q3_llama2/results_q3/nsys_resident.nsys-rep
+    /home/jovyan/DD2306_GPU_programming_assignments/HW2/q3_llama2/results_q3/nsys_resident.sqlite
