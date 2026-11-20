@@ -175,7 +175,53 @@ The considerations for the choice are:
 \todo{effect of changing the shared memory carveout (\texttt{cudaFuncSetAttribute} with \texttt{cudaFuncAttributePreferredSharedMemoryCarveout}) on runtime}
 
 \section{Question 2: Tiled Matrix Multiplication}
-\todo{not done yet}
+
+\subsection{Implementation}
+
+We compute $C=AB$ with $A\in\mathbb{R}^{m\times n}$, $B\in\mathbb{R}^{n\times p}$ in
+single precision. \texttt{gemm()} is the basic kernel from Assignment 1 (one thread per
+element of $C$, $16\times16$ blocks, all operands from global memory).
+\texttt{tiled\_gemm(a,b,c,m,n,p,tileX,tileY)} uses blocks of $\texttt{tileX}\times\texttt{tileY}$
+threads, each block computing a $\texttt{tileY}\times\texttt{tileX}$ tile of $C$.
+In each step the block advances along $k$ by $\texttt{tileX}$, cooperatively stages a
+$\texttt{tileY}\times\texttt{tileX}$ tile of $A$ and a $\texttt{tileX}\times\texttt{tileX}$
+tile of $B$ in dynamically allocated shared memory (loads are coalesced along rows),
+synchronises, accumulates, and synchronises again before the next step. Elements outside
+the matrices are loaded as $0$, so dimensions such as $513$ and $1023$ need no special
+case. The program runs \texttt{gemm()} first, then \texttt{tiled\_gemm()} for several tile
+sizes, and compares each result with a CPU reference (triple loop). The inputs are small
+multiples of $1/16$, so all products and partial sums are exactly representable in float
+and the results are independent of summation order. Kernel times are averages over
+repeated launches measured with \texttt{cudaEvent} after one warm-up launch.
+
+\subsection{Global memory reads of \texttt{tiled\_gemm()} versus \texttt{gemm()}}
+
+In \texttt{gemm()} every element of $C$ reads one row of $A$ and one column of $B$,
+i.e.\ $2n$ values, so the kernel performs $2mnp$ global reads in total.
+In \texttt{tiled\_gemm()} a block reads, for its $\texttt{tileY}\times\texttt{tileX}$ tile
+of $C$, a strip of $\texttt{tileY}\times n$ values of $A$ and $n\times\texttt{tileX}$ values
+of $B$, each element exactly once. There are $\frac{m}{\texttt{tileY}}\cdot\frac{p}{\texttt{tileX}}$ blocks, so
+\[
+  \text{reads}_{\text{tiled}} = mnp\left(\frac{1}{\texttt{tileX}}+\frac{1}{\texttt{tileY}}\right)
+  \;\overset{\texttt{tileX}=\texttt{tileY}=T}{=}\;\frac{2mnp}{T}.
+\]
+Each global value is thus reused by $T$ threads from shared memory, and global reads drop
+by a factor of $T$ (for example $8\times$, $16\times$ and $32\times$ for $T=8,16,32$).
+Both kernels write $mp$ values. At the matrix edges the tiled kernel does not read the
+padding, so the formula is exact when the dimensions are multiples of the tile size and
+an upper bound otherwise.
+
+\subsection{Results: $1024\times1024$ times $1024\times1024$}
+\todo{insert screenshot of the run with 3 tile sizes and explain the timings}
+
+\subsection{Results: $513\times8192$ times $8192\times1023$}
+\todo{insert screenshot and explain; discuss the non-multiple dimensions 513 and 1023 (partially filled edge tiles, wasted threads)}
+
+\subsection{Profiling: achieved occupancy and shared memory}
+\todo{Nsight Compute table for both inputs: achieved occupancy, static and dynamic shared memory per block, for the three tile sizes}
+
+\subsection{Runtime for increasing matrix sizes}
+\todo{bar chart of CPU, gemm() and three tiled kernels for sizes $32$ to $2048$; discuss whether profiling reveals anything unexpected}
 
 \section{Question 3: Accelerating Llama2 Inference}
 \todo{not done yet}

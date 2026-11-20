@@ -1,0 +1,14 @@
+# compiled binaries from run_q1.sh
+results_q1/conv_*
+results_q2/gemm
+# large intermediate database exported by nsys --stats
+*.sqlite
+# LaTeX build files
+HW2_report/*.aux
+HW2_report/*.log
+HW2_report/*.out
+HW2_report/*.fls
+HW2_report/*.fdb_latexmk
+HW2_report/*.bbl
+HW2_report/*.blg
+HW2_report/*.synctex.gz
