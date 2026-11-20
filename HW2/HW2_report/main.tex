@@ -1,0 +1,183 @@
+% Build: latexmk -pdf main.tex
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{array}
+\usepackage{microtype,graphicx,booktabs,enumitem,xcolor,titlesec,caption}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\urlstyle{same}
+
+\definecolor{linkblue}{HTML}{1F5FBF}
+\hypersetup{colorlinks=true,citecolor=linkblue,linkcolor=linkblue,urlcolor=linkblue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\linespread{1.05}
+\titleformat{\section}{\large\sffamily\bfseries}{\thesection}{0.7em}{}
+\titlespacing*{\section}{0pt}{1.3em}{0.4em}
+\titleformat{\subsection}{\normalsize\sffamily\bfseries}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.2em}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\setlist[description]{leftmargin=0pt,itemsep=0.2em,topsep=0.2em,font=\normalfont\bfseries}
+\setlength{\bibsep}{0.25em}
+\renewcommand{\bibfont}{\small\raggedright}
+\makeatletter
+\setlength{\@fptop}{0pt}\setlength{\@fpsep}{1.8em}\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}\setlength{\floatsep}{8pt plus 2pt minus 2pt}\setlength{\intextsep}{8pt plus 2pt minus 2pt}   % tighter space around floats
+
+% Marker for numbers or figures that still have to be measured and filled in.
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO: #1]}}}
+
+\begin{document}
+\emergencystretch=3em
+
+{\large\scshape DD2306 GPU Programming, Homework 2}\par\vspace{0.6em}
+{\raggedright\Large\sffamily\bfseries Report for HW2, Group N\par}
+\vspace{0.8em}
+{\large Changhe You}\quad{\small\href{mailto:changhe@kth.se}{changhe@kth.se}}\par
+\vspace{0.2em}
+
+\textbf{Environment.} NVIDIA H100 80GB HBM3 (compute capability 9.0), compiled with
+\texttt{nvcc -O3 -arch=sm\_90 -lineinfo}. All times are wall-clock CPU timer readings
+from \texttt{gettimeofday} unless stated otherwise.
+
+\section{Question 1: 1D Convolution}
+
+\subsection{Implementation}
+
+The mask has fixed width $W=5$, and out-of-boundary input elements are treated as $0$.
+For an output index $i$,
+\[
+  P[i]=\sum_{j=0}^{W-1} N[i+j-\lfloor W/2\rfloor]\,M[j].
+\]
+The \emph{basic} kernel assigns one thread to each output element and reads
+$N$ and $M$ directly from global memory, skipping indices outside $[0,n)$.
+The \emph{tiled} kernel assigns one block to $T=\texttt{TILE\_WIDTH}$ consecutive outputs.
+The block first cooperatively loads $T+W-1$ inputs (the tile plus a halo of
+$\lfloor W/2\rfloor=2$ elements on each side) into shared memory, writes $0$ for
+halo elements outside the array, calls \texttt{\_\_syncthreads()}, and then every
+thread computes its output from shared memory. Both kernels sum the five terms in
+the same order. Results of the two kernels are compared on the host with the
+tolerance $|a-b|\le 10^{-5}$, because floating-point results may differ in the last
+bits (different rounding or fused multiply-add choices), so exact equality is not a
+reliable test.
+
+\subsection{Name 3 application domains where convolutions are used}
+
+\begin{description}
+  \item[Image and video processing.] Blurring, sharpening and edge detection apply a small
+    kernel over the pixels (the 2D version of this exercise).
+  \item[Digital signal processing.] Audio filtering, smoothing of sensor data and
+    finite-impulse-response (FIR) filters are 1D convolutions.
+  \item[Deep learning.] Convolutional neural networks use convolutions as their core
+    layer for vision, speech and time-series models.
+\end{description}
+
+\subsection{Global memory reads and writes}
+
+Let $n$ be the array length, $W=5$ the mask width, and $T$ the tile width.
+Counts refer to accesses in the code, not to DRAM traffic; in practice the five
+elements of $M$ are served by the caches.
+
+\begin{description}
+  \item[Basic kernel.] Each thread reads, for every valid $j$, one element of $N$ and
+    one element of $M$. Only $6$ terms are lost at the two array ends
+    ($2+1$ on the left, $1+2$ on the right), so $N$ is read $5n-6$ times and $M$ is
+    read $5n-6$ times: $10n-12\approx 10n$ reads in total. Each thread writes one
+    output, giving $n$ writes.
+  \item[Tiled kernel (our implementation).] Each block loads $T+4$ input elements, and
+    there are $\lceil n/T\rceil$ blocks, so $N$ is read about $n+4n/T$ times (slightly
+    fewer at the array ends where ghost cells are not loaded). Our kernel still reads
+    $M[j]$ from global memory in every thread, which gives $5n$ reads of $M$. The total
+    is about $6n+4n/T$ reads and $n$ writes.
+\end{description}
+
+Tiling therefore reduces the reads of the input $N$ from about $5n$ to about
+$n(1+4/T)$, i.e.\ close to one read per element. Because $M$ is not cached in shared or
+constant memory in our kernel, the total only drops from $10n$ to about $6n$. Keeping
+$M$ in constant memory or in shared memory would bring the tiled total towards
+$n(1+4/T)$ reads. For example, with $n=16384$ and $T=128$ the counts are
+$163{,}828$ reads for the basic kernel and $98{,}812$ reads for the tiled kernel
+($16{,}892$ of them for $N$), both with $16{,}384$ writes.
+
+\subsection{Results for $N=1024,\dots,16384$}
+
+Figure~\ref{fig:q1-output} shows the program output and Table~\ref{tab:q1} lists the
+kernel times. All five runs print \texttt{PASS}, and the first outputs match a hand
+calculation, for example
+$P[0]=0.840188\cdot1.0+0.394383\cdot0.5+0.783099\cdot0.25=1.233154$.
+
+\begin{figure}[t]
+  \centering
+  \IfFileExists{fig/q1_output.png}{%
+    \includegraphics[width=\linewidth]{fig/q1_output.png}}{%
+    \fbox{\parbox{0.9\linewidth}{\centering\todo{insert screenshot fig/q1\_output.png of the runs for $N=1024$ to $16384$}}}}
+  \caption{Program output for $N=1024,2048,4096,8192,16384$.}
+  \label{fig:q1-output}
+\end{figure}
+
+\begin{table}[t]
+  \centering
+  \caption{CPU-timer kernel times with $\texttt{TILE\_WIDTH}=128$ and block size $256$ for the basic kernel.}
+  \label{tab:q1}
+  \begin{tabular}{rrr}
+    \toprule
+    $N$ & basic ($\mu$s) & tiled ($\mu$s) \\
+    \midrule
+    1024  & 94  & 17 \\
+    2048  & 94  & 16 \\
+    4096  & 97  & 18 \\
+    8192  & 93  & 17 \\
+    16384 & 103 & 18 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+These numbers should not be read as ``tiled is five times faster''. The times are almost
+independent of $N$, so they measure fixed launch overhead and not computation: even
+$N=16384$ is only 64 tiled blocks, fewer than the 132 SMs of an H100. In addition, the
+basic kernel is launched first and carries the one-time first-launch cost
+(the first CUDA call also takes about $0.2$--$0.3$\,s for context creation, visible in
+the ``Allocated device memory'' line). A fair comparison needs a warm-up launch,
+\texttt{cudaEvent} timing, repeated runs, and larger $N$.
+\todo{redo timing with warm-up, cudaEvent and repeats; replace Table~\ref{tab:q1}}
+
+\subsection{Choosing the tile size}
+
+\todo{run TILE\_WIDTH $=32,64,128,256,512,1024$ with the improved timing and report the measurements}
+
+The considerations for the choice are:
+\begin{itemize}[leftmargin=1.5em,itemsep=0.1em]
+  \item \textbf{Halo overhead.} A block loads $T+4$ elements for $T$ outputs, so the
+    redundant fraction is $4/T$: $12.5\%$ for $T=32$, but only $3\%$ for $T=128$.
+    Larger tiles amortise the halo better.
+  \item \textbf{Block size.} The block has $T$ threads, so $T$ should be a multiple of the
+    warp size $32$ and at most $1024$.
+  \item \textbf{Shared memory and occupancy.} A tile uses $4(T+4)$ bytes, which is tiny
+    (about 0.5\,KB for $T=128$), so shared memory does not limit occupancy here. The block
+    size does: very large $T$ allows few resident blocks per SM and, for small $N$,
+    leaves SMs idle because there are too few blocks.
+  \item \textbf{Parallelism for small $N$.} The number of blocks is $\lceil N/T\rceil$;
+    with $N=1024$ and $T=1024$ there is a single block on a single SM.
+\end{itemize}
+\todo{state the chosen optimal tile size and justify it with the measured data}
+
+\subsection{Profiling the tiled implementation}
+
+\todo{Nsight Systems: timeline and kernel/memcpy breakdown}\par
+\todo{Nsight Compute: performance hotspot (memory vs.\ compute), shared memory utilisation, achieved occupancy}\par
+\todo{effect of changing the shared memory carveout (\texttt{cudaFuncSetAttribute} with \texttt{cudaFuncAttributePreferredSharedMemoryCarveout}) on runtime}
+
+\section{Question 2: Tiled Matrix Multiplication}
+\todo{not done yet}
+
+\section{Question 3: Accelerating Llama2 Inference}
+\todo{not done yet}
+
+\end{document}

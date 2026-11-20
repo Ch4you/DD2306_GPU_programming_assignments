@@ -25,7 +25,10 @@ void cputimer_stop(const char* info){
 }
 
 #define MASK_WIDTH 5
+// Can be overridden at compile time: nvcc -DTILE_WIDTH=256 ...
+#ifndef TILE_WIDTH
 #define TILE_WIDTH 128
+#endif
 
 
 // Basic version: one thread computes one output element P[i],
@@ -71,7 +74,15 @@ __global__ void convolution_1D_tiled(float *N, float *M, float *P, int n)
 int main(int argc, char *argv[]) {
   
   // Read the arguments from the command line
+  if (argc < 2) {
+    printf("Usage: %s N [reps] [carveout]\n", argv[0]);
+    return 1;
+  }
   int N = atoi(argv[1]);
+  // Optional: number of timed repetitions for the cudaEvent benchmark (default 100)
+  int reps = (argc > 2) ? atoi(argv[2]) : 100;
+  // Optional: preferred shared memory carveout in percent (0..100), -1 = driver default
+  int carveout = (argc > 3) ? atoi(argv[3]) : -1;
 
 
   float *hostN; // The input array N of length N
@@ -144,6 +155,12 @@ int main(int argc, char *argv[]) {
 
   cputimer_stop("Copying output P to the CPU and print out the results");
 
+  if (carveout >= 0) {
+    gpuCheck(cudaFuncSetAttribute(convolution_1D_tiled,
+                                  cudaFuncAttributePreferredSharedMemoryCarveout,
+                                  carveout));
+  }
+
   /* Call the tiled kernel */
   cputimer_start();
   //@@  Define the execution configuration
@@ -173,6 +190,44 @@ int main(int argc, char *argv[]) {
       printf("PASS: basic and tiled results match.\n");
   } else {
       printf("FAIL: %d mismatches.\n", mismatches);
+  }
+
+  /* Benchmark: warm-up, then average of `reps` launches timed with cudaEvent.
+     The single-launch CPU timers above include first-launch overhead. */
+  if (reps > 0) {
+    cudaEvent_t ev0, ev1;
+    cudaEventCreate(&ev0);
+    cudaEventCreate(&ev1);
+
+    // warm-up (excluded from the measurement)
+    convolution_1D_basic<<<gridSize, blockSize>>>(deviceN, deviceM, deviceP, N);
+    convolution_1D_tiled<<<tiledGrid, TILE_WIDTH>>>(deviceN, deviceM, deviceP, N);
+    cudaDeviceSynchronize();
+
+    float msBasic = 0.0f, msTiled = 0.0f;
+
+    cudaEventRecord(ev0);
+    for (int r = 0; r < reps; r++) {
+      convolution_1D_basic<<<gridSize, blockSize>>>(deviceN, deviceM, deviceP, N);
+    }
+    cudaEventRecord(ev1);
+    cudaEventSynchronize(ev1);
+    cudaEventElapsedTime(&msBasic, ev0, ev1);
+
+    cudaEventRecord(ev0);
+    for (int r = 0; r < reps; r++) {
+      convolution_1D_tiled<<<tiledGrid, TILE_WIDTH>>>(deviceN, deviceM, deviceP, N);
+    }
+    cudaEventRecord(ev1);
+    cudaEventSynchronize(ev1);
+    cudaEventElapsedTime(&msTiled, ev0, ev1);
+
+    // CSV line: N, tile width, carveout, reps, avg basic [us], avg tiled [us]
+    printf("BENCH,%d,%d,%d,%d,%.3f,%.3f\n", N, TILE_WIDTH, carveout, reps,
+           1000.0f * msBasic / reps, 1000.0f * msTiled / reps);
+
+    cudaEventDestroy(ev0);
+    cudaEventDestroy(ev1);
   }
 
 
