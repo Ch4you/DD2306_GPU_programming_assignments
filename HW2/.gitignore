@@ -20,3 +20,7 @@ q3_llama2/run_resident
 q3_llama2/run_warp
 q3_llama2/*.o
 q3_llama2/stories15M.bin
+bonus_ipic3d/bin/
+bonus_ipic3d/src/*.o
+bonus_ipic3d/results_bonus/compare_particles
+bonus_ipic3d/results_bonus/run_*/particles_s*.bin
